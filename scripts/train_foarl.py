@@ -64,7 +64,11 @@ def main() -> int:
     # ---- vLLM 采样环境（CUDA_HOME 等，见 CLAUDE.md 踩坑 16）----
     import os
 
-    os.environ.setdefault("CUDA_HOME", "/root/miniconda3/lib/python3.12/site-packages/nvidia/cu13")
+    cu13 = "/root/miniconda3/lib/python3.12/site-packages/nvidia/cu13"
+    os.environ.setdefault("CUDA_HOME", cu13)
+    # LD_LIBRARY_PATH 必需：llm.sleep() 的 shutdown 路径 import cumem_allocator 需要 libnvrtc.so.13
+    #（2026-08-11 epoch 2 崩溃根因：sleep 时 ImportError: libnvrtc.so.13）
+    os.environ["LD_LIBRARY_PATH"] = f"{cu13}/lib:" + os.environ.get("LD_LIBRARY_PATH", "")
     os.environ["VLLM_ATTENTION_BACKEND"] = "FLASH_ATTN"
     os.environ["VLLM_USE_FLASHINFER_SAMPLER"] = "0"
 
@@ -122,8 +126,23 @@ def main() -> int:
         t0 = time.perf_counter()
         outputs = llm.generate(batch_prompts, params, lora_request=lora_req)
         print(f"[采样] 完成，耗时 {time.perf_counter() - t0:.1f}s")
-        # sleep 释放 GPU 给训练阶段（引擎进程保留，下轮 wake_up 复用）
-        llm.sleep()
+        # 采样结果立即落盘（崩溃保护：训练阶段读盘，采样不重跑）
+        rollout_path = out_dir / f"epoch{epoch + 1}_rollouts.jsonl"
+        with open(rollout_path, "w", encoding="utf-8") as f:
+            for i, rec in enumerate(records):
+                iid = rec["instance"]["instance_id"]
+                for s in range(n_samples):
+                    f.write(json.dumps({"iid": iid, "sample": s,
+                                        "text": outputs[i * n_samples + s].outputs[0].text},
+                                       ensure_ascii=False) + "\n")
+        print(f"[采样] 结果已落盘 → {rollout_path}")
+        # sleep 释放 GPU 给训练阶段（引擎进程保留，下轮 wake_up 复用）；失败则重试一次
+        try:
+            llm.sleep()
+        except Exception as e:
+            print(f"[采样] llm.sleep() 失败（{type(e).__name__}），重试...")
+            time.sleep(10)
+            llm.sleep()
         time.sleep(5)
         torch.cuda.empty_cache()
 
