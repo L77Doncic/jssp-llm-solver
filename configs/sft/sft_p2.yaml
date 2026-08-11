@@ -1,0 +1,35 @@
+# SFT 阶段 2：15x15（5000 样本，train 4000）—— --adapter 续训
+# max_length 10240：15x15 完整样本实测最大 9518（P99 9511），余量 7.6%
+# batch 1×accum8 = 有效 8（10240 序列 batch 1 实测 3.86s/步，expandable_segments 必需）
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  dtype: bf16
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_length: 10240
+  mask_prompt: true
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 8    # 有效 batch = 8
+  learning_rate: 1.0e-4
+  num_epochs: 2
+  warmup_steps: 60                  # 约 1000 步 × 6%
+  logging_steps: 25
+  eval_steps: 250
+  save_steps: 500
+  save_total_limit: 2
+  gradient_checkpointing: true
+  output_dir: /root/jssp/experiments/sft_qwen7b
+
+seed: 42

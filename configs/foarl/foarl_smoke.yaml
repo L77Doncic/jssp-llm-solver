@@ -1,0 +1,31 @@
+# FOARL 冒烟测试配置：4 实例 × 2 采样 × 1 epoch，快速验证 GRPO 链路
+# 跑通后执行正式训练（foarl.yaml，800 实例）
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  sft_adapter: /root/jssp/experiments/sft_qwen7b/final
+  dtype: bf16
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_instances: 4             # 冒烟：4 实例
+  scales: [6x6]
+
+sampling:
+  n_samples: 2                 # 冒烟：每组 2 采样
+  temperature: 0.7
+  top_p: 0.7
+  max_new_tokens: 4096
+
+reward:
+  lambda_opt: 1.0
+
+grpo:
+  kl_coef: 0.05
+  learning_rate: 5.0e-5
+  epochs: 1
+  max_grad_norm: 1.0
+
+output_dir: /root/jssp/experiments/foarl_smoke
+seed: 42

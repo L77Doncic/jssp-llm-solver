@@ -1,0 +1,36 @@
+# SFT 阶段 1：6x6 + 10x10（3.5 万样本）
+# max_length 4096：6x6 完整样本 ~1611、10x10 ~3500 tokens，完整容纳
+# 后续阶段：p2（15x15）→ p3（20x20）用 --adapter 续训同一 LoRA
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  dtype: bf16
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_length: 4096
+  mask_prompt: true
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 4
+  gradient_accumulation_steps: 16   # 有效 batch = 32（batch 4 @4096 首步 fp32 logits OOM → 降为 2）
+  use_chunked_loss: true            # 分块 CE，规避 ForCausalLMLoss 的 logits.float() 全量 fp32 拷贝
+  learning_rate: 2.0e-4
+  num_epochs: 2
+  warmup_steps: 66                 # 约 2188 步 × 3%
+  logging_steps: 50
+  eval_steps: 500
+  save_steps: 1000
+  save_total_limit: 2
+  gradient_checkpointing: true
+  output_dir: /root/jssp/experiments/sft_qwen7b
+
+seed: 42

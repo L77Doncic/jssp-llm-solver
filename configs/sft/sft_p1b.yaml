@@ -1,0 +1,35 @@
+# SFT 阶段 1b：10x10（15000 样本，train 12000）—— --adapter 续训 p1a
+# max_length 5120：10x10 完整样本实测最大 4176 tokens（P99 4174），余量 22%
+# batch 1×accum32 = 有效 32（5120 序列 batch 2 会 OOM）
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  dtype: bf16
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_length: 5120
+  mask_prompt: true
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 32   # 有效 batch = 32
+  learning_rate: 1.5e-4
+  num_epochs: 2
+  warmup_steps: 45                  # 约 750 步 × 6%
+  logging_steps: 50
+  eval_steps: 375
+  save_steps: 750
+  save_total_limit: 2
+  gradient_checkpointing: true
+  output_dir: /root/jssp/experiments/sft_qwen7b
+
+seed: 42

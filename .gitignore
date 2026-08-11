@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 数据与大文件（数据落在 /root/autodl-tmp/jssp_data，不在此仓库）
+data/
+*.jsonl
+!tests/**/*.jsonl
+
+# 实验产物
+experiments/*/
+!experiments/README.md
+*.log
+
+# 模型权重
+*.safetensors
+*.bin
+*.pt
+checkpoints/
+
+# 工具
+.idea/
+.vscode/
+.DS_Store
+.ipynb_checkpoints/
+
+# 密钥与凭据（SSH 密码等严禁入库）
+.env
+*.key

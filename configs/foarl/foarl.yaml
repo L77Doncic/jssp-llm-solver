@@ -1,0 +1,33 @@
+# FOARL 训练配置（阶段 4）— GRPO + 可行性/最优性联合奖励
+# 对齐 LLMCoSolver 论文：SFT 后模型存在约束违规（贪婪违规），FOARL 专门修复。
+# 数据：从 train split 抽取实例（6x6/10x10 为主，监督信号最优，奖励锚点可靠）
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  sft_adapter: /root/jssp/experiments/sft_qwen7b/final   # SFT 后模型 = 策略起点 + KL 参考
+  dtype: bf16
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_instances: 800            # FOARL 实例数（论文 ≤3200；800 × 8 rollout 一轮约 3 小时）
+  scales: [6x6, 10x10]          # 用监督信号最优的规模（奖励锚点可靠）
+
+sampling:
+  n_samples: 8                  # 每实例组内采样数（GRPO 组大小）
+  temperature: 0.7              # 论文 BoN/RL 采样温度
+  top_p: 0.7
+  max_new_tokens: 4096          # 下限，按规模放大（68×n×m）
+
+reward:
+  lambda_opt: 1.0               # 最优性奖励权重 λ（r = r_feas + λ·r_opt）
+  # 参考 makespan 来源：监督数据（CP-SAT 解）
+
+grpo:
+  kl_coef: 0.05                 # KL 惩罚系数 β
+  learning_rate: 5.0e-5
+  epochs: 3                     # GRPO 轮数（每轮：采样→奖励→更新）
+  max_grad_norm: 1.0
+
+output_dir: /root/jssp/experiments/foarl_qwen7b
+seed: 42

@@ -1,0 +1,35 @@
+# SFT 冒烟测试配置：验证脚本/依赖/LoRA 训练链路（20 步，验证档 180 条数据）
+# 跑通后执行正式训练（sft.yaml，42K 数据）
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  dtype: bf16
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_length: 1024
+  mask_prompt: true
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 2
+  learning_rate: 2.0e-4
+  num_epochs: 1
+  max_steps: 20          # 冒烟：只跑 20 步
+  warmup_steps: 1
+  logging_steps: 5
+  eval_steps: 10
+  save_steps: 10
+  save_total_limit: 1
+  gradient_checkpointing: true
+  output_dir: /root/jssp/experiments/sft_smoke
+
+seed: 42

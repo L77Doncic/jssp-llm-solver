@@ -1,0 +1,34 @@
+# SFT 训练配置（阶段 3）— Qwen2.5-7B-Instruct + LoRA
+# 数据源：阶段 1 放量档监督数据（/root/autodl-tmp/jssp_data）
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  dtype: bf16                 # 5090 原生支持
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_length: 1024            # 6x6~20x20 实例 + 排程 JSON 均在此长度内
+  mask_prompt: true           # 仅对排程答案部分计算损失
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  per_device_train_batch_size: 4
+  per_device_eval_batch_size: 8
+  gradient_accumulation_steps: 8   # 有效 batch = 4 × 8 = 32
+  learning_rate: 2.0e-4
+  num_epochs: 2
+  warmup_steps: 63       # 约 2100 步 × 3%（33.6K train / 有效 batch 32 ≈ 1050 步/epoch）
+  logging_steps: 50
+  eval_steps: 500
+  save_steps: 1000
+  save_total_limit: 2
+  gradient_checkpointing: true
+  output_dir: /root/jssp/experiments/sft_qwen7b
+
+seed: 42
