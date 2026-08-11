@@ -94,57 +94,69 @@ def main() -> int:
         from vllm import LLM, SamplingParams
         from vllm.lora.request import LoRARequest
 
-        if "llm" not in locals() or llm is None:
-            def make_llm():
-                return LLM(
-                    model=config["model"]["base_model"],
-                    enable_lora=True,
-                    max_lora_rank=32,
-                    gpu_memory_utilization=0.85,
-                    enforce_eager=True,
-                )
-
-            try:
-                llm = make_llm()
-            except Exception as e:
-                print(f"[采样] vLLM 启动失败（{type(e).__name__}），60s 后重试...")
-                time.sleep(60)
-                llm = make_llm()
-        else:
-            llm.wake_up()
-            time.sleep(5)
-        lora_req = LoRARequest("foarl", 1, current_adapter)
-        n_samples = config["sampling"]["n_samples"]
-        max_nt = max(config["sampling"]["max_new_tokens"], 68 * max(Instance.from_dict(r["instance"]).n * Instance.from_dict(r["instance"]).m for r in records))
-        params = SamplingParams(
-            temperature=config["sampling"]["temperature"],
-            top_p=config["sampling"]["top_p"],
-            max_tokens=max_nt,
-        )
-        batch_prompts = [p for p in prompts for _ in range(n_samples)]  # 每实例 n_samples 份
-        print(f"[采样] {len(batch_prompts)} 个请求（{len(records)} 实例 × {n_samples}）...")
-        t0 = time.perf_counter()
-        outputs = llm.generate(batch_prompts, params, lora_request=lora_req)
-        print(f"[采样] 完成，耗时 {time.perf_counter() - t0:.1f}s")
-        # 采样结果立即落盘（崩溃保护：训练阶段读盘，采样不重跑）
         rollout_path = out_dir / f"epoch{epoch + 1}_rollouts.jsonl"
-        with open(rollout_path, "w", encoding="utf-8") as f:
-            for i, rec in enumerate(records):
-                iid = rec["instance"]["instance_id"]
-                for s in range(n_samples):
-                    f.write(json.dumps({"iid": iid, "sample": s,
-                                        "text": outputs[i * n_samples + s].outputs[0].text},
-                                       ensure_ascii=False) + "\n")
-        print(f"[采样] 结果已落盘 → {rollout_path}")
-        # sleep 释放 GPU 给训练阶段（引擎进程保留，下轮 wake_up 复用）；失败则重试一次
-        try:
-            llm.sleep()
-        except Exception as e:
-            print(f"[采样] llm.sleep() 失败（{type(e).__name__}），重试...")
-            time.sleep(10)
-            llm.sleep()
-        time.sleep(5)
-        torch.cuda.empty_cache()
+        n_samples = config["sampling"]["n_samples"]
+
+        # 采样复用：已落盘的 rollouts 直接加载（崩溃保护，2026-08-11 起）
+        if rollout_path.exists():
+            print(f"[采样] 复用已落盘 rollouts → {rollout_path}")
+            with open(rollout_path, encoding="utf-8") as f:
+                rows = [json.loads(line) for line in f]
+            texts_by_key = {(r["iid"], r["sample"]): r["text"] for r in rows}
+            texts = [
+                [texts_by_key[(rec["instance"]["instance_id"], s)] for s in range(n_samples)]
+                for rec in records
+            ]
+        else:
+            if "llm" not in locals() or llm is None:
+                def make_llm():
+                    return LLM(
+                        model=config["model"]["base_model"],
+                        enable_lora=True,
+                        max_lora_rank=32,
+                        gpu_memory_utilization=0.85,
+                        enforce_eager=True,
+                    )
+
+                try:
+                    llm = make_llm()
+                except Exception as e:
+                    print(f"[采样] vLLM 启动失败（{type(e).__name__}），60s 后重试...")
+                    time.sleep(60)
+                    llm = make_llm()
+            else:
+                llm.wake_up()
+                time.sleep(5)
+            lora_req = LoRARequest("foarl", 1, current_adapter)
+            max_nt = max(config["sampling"]["max_new_tokens"], 68 * max(Instance.from_dict(r["instance"]).n * Instance.from_dict(r["instance"]).m for r in records))
+            params = SamplingParams(
+                temperature=config["sampling"]["temperature"],
+                top_p=config["sampling"]["top_p"],
+                max_tokens=max_nt,
+            )
+            batch_prompts = [p for p in prompts for _ in range(n_samples)]  # 每实例 n_samples 份
+            print(f"[采样] {len(batch_prompts)} 个请求（{len(records)} 实例 × {n_samples}）...")
+            t0 = time.perf_counter()
+            outputs = llm.generate(batch_prompts, params, lora_request=lora_req)
+            print(f"[采样] 完成，耗时 {time.perf_counter() - t0:.1f}s")
+            # 采样结果立即落盘（崩溃保护：训练阶段读盘，采样不重跑）
+            with open(rollout_path, "w", encoding="utf-8") as f:
+                for i, rec in enumerate(records):
+                    iid = rec["instance"]["instance_id"]
+                    for s in range(n_samples):
+                        f.write(json.dumps({"iid": iid, "sample": s,
+                                            "text": outputs[i * n_samples + s].outputs[0].text},
+                                           ensure_ascii=False) + "\n")
+            print(f"[采样] 结果已落盘 → {rollout_path}")
+            # sleep 释放 GPU 给训练阶段（引擎进程保留，下轮 wake_up 复用）；失败则重试一次
+            try:
+                llm.sleep()
+            except Exception as e:
+                print(f"[采样] llm.sleep() 失败（{type(e).__name__}），重试...")
+                time.sleep(10)
+                llm.sleep()
+            time.sleep(5)
+            torch.cuda.empty_cache()
 
         # ---- 2. 奖励 + 3. 优势 ----
         per_instance_rewards: dict[str, list[float]] = {}
@@ -152,20 +164,18 @@ def main() -> int:
         for i, rec in enumerate(records):
             iid = rec["instance"]["instance_id"]
             inst = Instance.from_dict(rec["instance"])
-            rewards, texts = [], []
+            rewards = []
             for s in range(n_samples):
-                text = outputs[i * n_samples + s].outputs[0].text
+                text = texts[i][s]
                 parsed = parse_schedule(inst, text)
                 if parsed.ok:
                     check = validate(inst, parsed.starts)
                     if check.valid:
                         rewards.append(combined_reward(inst, check, ref_makespan[iid], config["reward"]["lambda_opt"]))
-                        texts.append(text)
                         continue
                 rewards.append(0.0)  # 不可行：r_feas=0（combined_reward 对不可行为 0）
-                texts.append(text)
             per_instance_rewards[iid] = rewards
-            rollouts[iid] = texts
+            rollouts[iid] = texts[i]
 
         feas_rate = sum(1 for rs in per_instance_rewards.values() if max(rs) > 1.0) / len(records)
         print(f"[奖励] 至少一个可行解的实例占比: {feas_rate * 100:.1f}%")
