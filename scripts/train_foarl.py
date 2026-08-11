@@ -125,8 +125,21 @@ def main() -> int:
                     time.sleep(60)
                     llm = make_llm()
             else:
-                llm.wake_up()
-                time.sleep(5)
+                try:
+                    llm.wake_up()
+                    time.sleep(5)
+                except Exception as e:
+                    # wake_up 失败（如显存残留）：销毁引擎重建
+                    print(f"[采样] llm.wake_up() 失败（{type(e).__name__}），销毁重建...")
+                    try:
+                        llm.sleep()
+                    except Exception:
+                        pass
+                    del llm
+                    gc.collect()
+                    torch.cuda.empty_cache()
+                    time.sleep(15)
+                    llm = make_llm()
             lora_req = LoRARequest("foarl", 1, current_adapter)
             max_nt = max(config["sampling"]["max_new_tokens"], 68 * max(Instance.from_dict(r["instance"]).n * Instance.from_dict(r["instance"]).m for r in records))
             params = SamplingParams(
@@ -253,8 +266,12 @@ def main() -> int:
         current_adapter = str(out_dir / f"epoch{epoch + 1}")
         model.save_pretrained(current_adapter)
         print(f"[训练] loss={total_loss / n_items:.4f} | 新 adapter → {current_adapter} | 耗时 {time.perf_counter() - t0:.1f}s")
+        # 彻底清理：PeftModel 循环引用需 gc.collect() 才释放 base 权重（否则残留 ~13GB
+        # 导致下一轮 vLLM 启动失败，2026-08-11 epoch 3 崩溃根因）
         del model
+        gc.collect()
         torch.cuda.empty_cache()
+        time.sleep(10)
 
         epoch_stats = {
             "epoch": epoch + 1,
