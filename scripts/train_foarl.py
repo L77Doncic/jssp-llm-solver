@@ -161,6 +161,11 @@ def main() -> int:
                                             "text": outputs[i * n_samples + s].outputs[0].text},
                                            ensure_ascii=False) + "\n")
             print(f"[采样] 结果已落盘 → {rollout_path}")
+            # 构建 texts 供奖励/训练阶段使用（2026-08-11 bug：此前漏了这步导致 UnboundLocalError）
+            texts = [
+                [outputs[i * n_samples + s].outputs[0].text for s in range(n_samples)]
+                for i in range(len(records))
+            ]
             # sleep 释放 GPU 给训练阶段（引擎进程保留，下轮 wake_up 复用）；失败则重试一次
             try:
                 llm.sleep()
