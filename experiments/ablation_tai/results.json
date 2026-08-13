@@ -1,0 +1,18 @@
+{
+  "variants": [
+    {
+      "variant": "plain",
+      "feasible_rate": 1.0,
+      "avg_gap_pct": 41.53594614933311,
+      "best_gap_pct": 10.137457044673539,
+      "elapsed_s": 2814.742899417877
+    },
+    {
+      "variant": "with_spt_hint",
+      "feasible_rate": 0.9833333333333333,
+      "avg_gap_pct": 42.21141484197053,
+      "best_gap_pct": 10.137457044673539,
+      "elapsed_s": 2729.5812458992004
+    }
+  ]
+}
