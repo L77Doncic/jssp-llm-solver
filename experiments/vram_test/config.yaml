@@ -1,0 +1,26 @@
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  dtype: bf16
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_length: 10240
+  mask_prompt: true
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+training:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 1
+  learning_rate: 1.0e-4
+  num_epochs: 1
+  max_steps: 2
+  warmup_steps: 0
+  logging_steps: 1
+  save_steps: 100
+  gradient_checkpointing: true
+  output_dir: /root/jssp/experiments/vram_test
+seed: 42

@@ -1,0 +1,41 @@
+# SFT 阶段 3：20x20（2000 样本，train 1600）—— --adapter 续训
+# max_length 17408：20x20 完整样本实测最大 17112（P99 17109），余量 296 tokens
+#   （18432 会 OOM：实测差 1.16GB；17408 是精确边界，预检会拦截任何超限样本）
+# batch 1×accum2 = 有效 2（显存极限）
+# 2026-08-10 OOM 修复：① loss 改 checkpoint 流式（chunk_size 1024，fp32 不再全序列常驻）；
+#   ② train_sft.py 训练期 use_cache=False（省去 ~1 GiB 全序列 KV cache）。
+#   详见 CLAUDE.md「踩坑 11/16」。
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  dtype: bf16
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_length: 17408
+  mask_prompt: true
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 2    # 有效 batch = 2（显存极限）
+  learning_rate: 5.0e-5
+  num_epochs: 1
+  warmup_steps: 50                  # 约 800 步 × 6%
+  logging_steps: 20
+  eval_steps: 200
+  save_steps: 400
+  save_total_limit: 2
+  gradient_checkpointing: true
+  use_chunked_loss: true
+  chunk_size: 512                   # 分块 lm_head：单 chunk 瞬时峰值 ≈ 0.47 GiB；实测 17408 fwd+bwd 峰值 26.9 GiB / 余 2.9 GiB
+  output_dir: /root/jssp/experiments/sft_qwen7b
+
+seed: 42

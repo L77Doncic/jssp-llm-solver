@@ -7,12 +7,23 @@ venv/
 
 # 数据与大文件（数据落在 /root/autodl-tmp/jssp_data，不在此仓库）
 data/
+!src/data/
 *.jsonl
 !tests/**/*.jsonl
 
-# 实验产物
-experiments/*/
+# 实验产物（只入 summary 与关键结果，权重/日志/中间数据一律不入库）
+experiments/*
 !experiments/README.md
+!experiments/summary/
+!experiments/*/
+experiments/*/*
+!experiments/summary/*
+!experiments/*/summary.md
+!experiments/*/results.json
+!experiments/*/build_stats.json
+!experiments/*/foarl_stats.jsonl
+!experiments/*/config.yaml
+!experiments/*/train_stats.json
 *.log
 
 # 模型权重

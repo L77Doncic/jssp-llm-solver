@@ -1,0 +1,1816 @@
+{
+  "stats": {
+    "n": 300,
+    "feasible_rate": 0.97,
+    "avg_gap_pct": 43.03006720576836,
+    "best_gap_pct": 10.137457044673539,
+    "avg_makespan": 707.2405498281787,
+    "min_makespan": 459,
+    "max_makespan": 929,
+    "avg_gen_time_per_sample_s": 10.244080056017264,
+    "n_samples_bon": 8,
+    "total_wall_time_s": 24589.624547727406
+  },
+  "per_instance": [
+    {
+      "instance_id": "gen-6x6-42-00026",
+      "feasible": true,
+      "makespan": 754,
+      "gap_pct": 59.7457627118644
+    },
+    {
+      "instance_id": "gen-6x6-42-00037",
+      "feasible": true,
+      "makespan": 765,
+      "gap_pct": 38.58695652173913
+    },
+    {
+      "instance_id": "gen-6x6-42-00044",
+      "feasible": true,
+      "makespan": 699,
+      "gap_pct": 34.68208092485549
+    },
+    {
+      "instance_id": "gen-6x6-42-00071",
+      "feasible": true,
+      "makespan": 735,
+      "gap_pct": 69.35483870967742
+    },
+    {
+      "instance_id": "gen-6x6-42-00075",
+      "feasible": true,
+      "makespan": 847,
+      "gap_pct": 67.72277227722773
+    },
+    {
+      "instance_id": "gen-6x6-42-00083",
+      "feasible": true,
+      "makespan": 716,
+      "gap_pct": 36.12167300380228
+    },
+    {
+      "instance_id": "gen-6x6-42-00095",
+      "feasible": true,
+      "makespan": 825,
+      "gap_pct": 47.8494623655914
+    },
+    {
+      "instance_id": "gen-6x6-42-00102",
+      "feasible": true,
+      "makespan": 675,
+      "gap_pct": 29.310344827586203
+    },
+    {
+      "instance_id": "gen-6x6-42-00110",
+      "feasible": true,
+      "makespan": 716,
+      "gap_pct": 28.085867620751344
+    },
+    {
+      "instance_id": "gen-6x6-42-00117",
+      "feasible": true,
+      "makespan": 622,
+      "gap_pct": 35.5119825708061
+    },
+    {
+      "instance_id": "gen-6x6-42-00141",
+      "feasible": true,
+      "makespan": 527,
+      "gap_pct": 28.850855745721272
+    },
+    {
+      "instance_id": "gen-6x6-42-00162",
+      "feasible": true,
+      "makespan": 617,
+      "gap_pct": 32.40343347639485
+    },
+    {
+      "instance_id": "gen-6x6-42-00168",
+      "feasible": true,
+      "makespan": 812,
+      "gap_pct": 28.075709779179807
+    },
+    {
+      "instance_id": "gen-6x6-42-00175",
+      "feasible": true,
+      "makespan": 666,
+      "gap_pct": 33.734939759036145
+    },
+    {
+      "instance_id": "gen-6x6-42-00179",
+      "feasible": true,
+      "makespan": 676,
+      "gap_pct": 40.833333333333336
+    },
+    {
+      "instance_id": "gen-6x6-42-00185",
+      "feasible": true,
+      "makespan": 595,
+      "gap_pct": 41.33016627078385
+    },
+    {
+      "instance_id": "gen-6x6-42-00197",
+      "feasible": true,
+      "makespan": 588,
+      "gap_pct": 37.704918032786885
+    },
+    {
+      "instance_id": "gen-6x6-42-00212",
+      "feasible": true,
+      "makespan": 780,
+      "gap_pct": 47.44801512287334
+    },
+    {
+      "instance_id": "gen-6x6-42-00227",
+      "feasible": true,
+      "makespan": 594,
+      "gap_pct": 30.837004405286343
+    },
+    {
+      "instance_id": "gen-6x6-42-00232",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00250",
+      "feasible": true,
+      "makespan": 723,
+      "gap_pct": 29.80251346499102
+    },
+    {
+      "instance_id": "gen-6x6-42-00270",
+      "feasible": true,
+      "makespan": 799,
+      "gap_pct": 49.34579439252336
+    },
+    {
+      "instance_id": "gen-6x6-42-00291",
+      "feasible": true,
+      "makespan": 813,
+      "gap_pct": 35.27454242928453
+    },
+    {
+      "instance_id": "gen-6x6-42-00305",
+      "feasible": true,
+      "makespan": 567,
+      "gap_pct": 44.642857142857146
+    },
+    {
+      "instance_id": "gen-6x6-42-00308",
+      "feasible": true,
+      "makespan": 649,
+      "gap_pct": 30.32128514056225
+    },
+    {
+      "instance_id": "gen-6x6-42-00339",
+      "feasible": true,
+      "makespan": 729,
+      "gap_pct": 55.1063829787234
+    },
+    {
+      "instance_id": "gen-6x6-42-00340",
+      "feasible": true,
+      "makespan": 572,
+      "gap_pct": 39.51219512195122
+    },
+    {
+      "instance_id": "gen-6x6-42-00344",
+      "feasible": true,
+      "makespan": 698,
+      "gap_pct": 31.203007518796994
+    },
+    {
+      "instance_id": "gen-6x6-42-00363",
+      "feasible": true,
+      "makespan": 637,
+      "gap_pct": 21.333333333333336
+    },
+    {
+      "instance_id": "gen-6x6-42-00386",
+      "feasible": true,
+      "makespan": 716,
+      "gap_pct": 39.029126213592235
+    },
+    {
+      "instance_id": "gen-6x6-42-00400",
+      "feasible": true,
+      "makespan": 721,
+      "gap_pct": 32.05128205128205
+    },
+    {
+      "instance_id": "gen-6x6-42-00417",
+      "feasible": true,
+      "makespan": 641,
+      "gap_pct": 10.137457044673539
+    },
+    {
+      "instance_id": "gen-6x6-42-00418",
+      "feasible": true,
+      "makespan": 637,
+      "gap_pct": 26.89243027888446
+    },
+    {
+      "instance_id": "gen-6x6-42-00425",
+      "feasible": true,
+      "makespan": 690,
+      "gap_pct": 37.45019920318725
+    },
+    {
+      "instance_id": "gen-6x6-42-00433",
+      "feasible": true,
+      "makespan": 748,
+      "gap_pct": 49.899799599198396
+    },
+    {
+      "instance_id": "gen-6x6-42-00443",
+      "feasible": true,
+      "makespan": 703,
+      "gap_pct": 36.50485436893204
+    },
+    {
+      "instance_id": "gen-6x6-42-00447",
+      "feasible": true,
+      "makespan": 768,
+      "gap_pct": 57.05521472392638
+    },
+    {
+      "instance_id": "gen-6x6-42-00471",
+      "feasible": true,
+      "makespan": 689,
+      "gap_pct": 25.045372050816695
+    },
+    {
+      "instance_id": "gen-6x6-42-00481",
+      "feasible": true,
+      "makespan": 837,
+      "gap_pct": 44.310344827586206
+    },
+    {
+      "instance_id": "gen-6x6-42-00503",
+      "feasible": true,
+      "makespan": 658,
+      "gap_pct": 36.7983367983368
+    },
+    {
+      "instance_id": "gen-6x6-42-00506",
+      "feasible": true,
+      "makespan": 660,
+      "gap_pct": 49.321266968325794
+    },
+    {
+      "instance_id": "gen-6x6-42-00512",
+      "feasible": true,
+      "makespan": 680,
+      "gap_pct": 44.680851063829785
+    },
+    {
+      "instance_id": "gen-6x6-42-00522",
+      "feasible": true,
+      "makespan": 646,
+      "gap_pct": 34.303534303534306
+    },
+    {
+      "instance_id": "gen-6x6-42-00528",
+      "feasible": true,
+      "makespan": 623,
+      "gap_pct": 42.5629290617849
+    },
+    {
+      "instance_id": "gen-6x6-42-00530",
+      "feasible": true,
+      "makespan": 660,
+      "gap_pct": 38.94736842105263
+    },
+    {
+      "instance_id": "gen-6x6-42-00535",
+      "feasible": true,
+      "makespan": 750,
+      "gap_pct": 51.821862348178136
+    },
+    {
+      "instance_id": "gen-6x6-42-00554",
+      "feasible": true,
+      "makespan": 612,
+      "gap_pct": 33.91684901531728
+    },
+    {
+      "instance_id": "gen-6x6-42-00555",
+      "feasible": true,
+      "makespan": 600,
+      "gap_pct": 38.24884792626728
+    },
+    {
+      "instance_id": "gen-6x6-42-00583",
+      "feasible": true,
+      "makespan": 901,
+      "gap_pct": 91.70212765957447
+    },
+    {
+      "instance_id": "gen-6x6-42-00599",
+      "feasible": true,
+      "makespan": 881,
+      "gap_pct": 35.95679012345679
+    },
+    {
+      "instance_id": "gen-6x6-42-00607",
+      "feasible": true,
+      "makespan": 746,
+      "gap_pct": 45.703125
+    },
+    {
+      "instance_id": "gen-6x6-42-00608",
+      "feasible": true,
+      "makespan": 802,
+      "gap_pct": 60.079840319361274
+    },
+    {
+      "instance_id": "gen-6x6-42-00609",
+      "feasible": true,
+      "makespan": 669,
+      "gap_pct": 45.119305856832966
+    },
+    {
+      "instance_id": "gen-6x6-42-00610",
+      "feasible": true,
+      "makespan": 743,
+      "gap_pct": 47.42063492063492
+    },
+    {
+      "instance_id": "gen-6x6-42-00615",
+      "feasible": true,
+      "makespan": 782,
+      "gap_pct": 65.67796610169492
+    },
+    {
+      "instance_id": "gen-6x6-42-00619",
+      "feasible": true,
+      "makespan": 682,
+      "gap_pct": 52.23214285714286
+    },
+    {
+      "instance_id": "gen-6x6-42-00628",
+      "feasible": true,
+      "makespan": 684,
+      "gap_pct": 37.07414829659319
+    },
+    {
+      "instance_id": "gen-6x6-42-00633",
+      "feasible": true,
+      "makespan": 664,
+      "gap_pct": 34.68559837728195
+    },
+    {
+      "instance_id": "gen-6x6-42-00665",
+      "feasible": true,
+      "makespan": 857,
+      "gap_pct": 40.261865793780686
+    },
+    {
+      "instance_id": "gen-6x6-42-00691",
+      "feasible": true,
+      "makespan": 748,
+      "gap_pct": 37.247706422018354
+    },
+    {
+      "instance_id": "gen-6x6-42-00743",
+      "feasible": true,
+      "makespan": 660,
+      "gap_pct": 27.413127413127413
+    },
+    {
+      "instance_id": "gen-6x6-42-00746",
+      "feasible": true,
+      "makespan": 704,
+      "gap_pct": 37.5
+    },
+    {
+      "instance_id": "gen-6x6-42-00749",
+      "feasible": true,
+      "makespan": 573,
+      "gap_pct": 35.78199052132701
+    },
+    {
+      "instance_id": "gen-6x6-42-00752",
+      "feasible": true,
+      "makespan": 670,
+      "gap_pct": 38.429752066115704
+    },
+    {
+      "instance_id": "gen-6x6-42-00776",
+      "feasible": true,
+      "makespan": 767,
+      "gap_pct": 62.15644820295984
+    },
+    {
+      "instance_id": "gen-6x6-42-00783",
+      "feasible": true,
+      "makespan": 525,
+      "gap_pct": 29.310344827586203
+    },
+    {
+      "instance_id": "gen-6x6-42-00790",
+      "feasible": true,
+      "makespan": 907,
+      "gap_pct": 69.21641791044776
+    },
+    {
+      "instance_id": "gen-6x6-42-00803",
+      "feasible": true,
+      "makespan": 662,
+      "gap_pct": 33.73737373737374
+    },
+    {
+      "instance_id": "gen-6x6-42-00805",
+      "feasible": true,
+      "makespan": 694,
+      "gap_pct": 45.18828451882845
+    },
+    {
+      "instance_id": "gen-6x6-42-00808",
+      "feasible": true,
+      "makespan": 689,
+      "gap_pct": 25.272727272727273
+    },
+    {
+      "instance_id": "gen-6x6-42-00810",
+      "feasible": true,
+      "makespan": 904,
+      "gap_pct": 67.09796672828097
+    },
+    {
+      "instance_id": "gen-6x6-42-00829",
+      "feasible": true,
+      "makespan": 639,
+      "gap_pct": 28.57142857142857
+    },
+    {
+      "instance_id": "gen-6x6-42-00830",
+      "feasible": true,
+      "makespan": 709,
+      "gap_pct": 49.89429175475687
+    },
+    {
+      "instance_id": "gen-6x6-42-00835",
+      "feasible": true,
+      "makespan": 645,
+      "gap_pct": 30.040322580645164
+    },
+    {
+      "instance_id": "gen-6x6-42-00896",
+      "feasible": true,
+      "makespan": 624,
+      "gap_pct": 41.17647058823529
+    },
+    {
+      "instance_id": "gen-6x6-42-00903",
+      "feasible": true,
+      "makespan": 735,
+      "gap_pct": 40.804597701149426
+    },
+    {
+      "instance_id": "gen-6x6-42-00912",
+      "feasible": true,
+      "makespan": 759,
+      "gap_pct": 69.79865771812081
+    },
+    {
+      "instance_id": "gen-6x6-42-00922",
+      "feasible": true,
+      "makespan": 719,
+      "gap_pct": 41.53543307086614
+    },
+    {
+      "instance_id": "gen-6x6-42-00923",
+      "feasible": true,
+      "makespan": 771,
+      "gap_pct": 42.513863216266174
+    },
+    {
+      "instance_id": "gen-6x6-42-00927",
+      "feasible": true,
+      "makespan": 826,
+      "gap_pct": 38.82352941176471
+    },
+    {
+      "instance_id": "gen-6x6-42-00967",
+      "feasible": true,
+      "makespan": 664,
+      "gap_pct": 40.67796610169492
+    },
+    {
+      "instance_id": "gen-6x6-42-00973",
+      "feasible": true,
+      "makespan": 785,
+      "gap_pct": 37.478108581436075
+    },
+    {
+      "instance_id": "gen-6x6-42-01004",
+      "feasible": true,
+      "makespan": 634,
+      "gap_pct": 49.1764705882353
+    },
+    {
+      "instance_id": "gen-6x6-42-01005",
+      "feasible": true,
+      "makespan": 631,
+      "gap_pct": 46.403712296983755
+    },
+    {
+      "instance_id": "gen-6x6-42-01025",
+      "feasible": true,
+      "makespan": 747,
+      "gap_pct": 35.081374321880645
+    },
+    {
+      "instance_id": "gen-6x6-42-01026",
+      "feasible": true,
+      "makespan": 915,
+      "gap_pct": 63.97849462365591
+    },
+    {
+      "instance_id": "gen-6x6-42-01030",
+      "feasible": true,
+      "makespan": 682,
+      "gap_pct": 30.65134099616858
+    },
+    {
+      "instance_id": "gen-6x6-42-01034",
+      "feasible": true,
+      "makespan": 742,
+      "gap_pct": 106.68523676880224
+    },
+    {
+      "instance_id": "gen-6x6-42-01062",
+      "feasible": true,
+      "makespan": 687,
+      "gap_pct": 18.65284974093264
+    },
+    {
+      "instance_id": "gen-6x6-42-01064",
+      "feasible": true,
+      "makespan": 696,
+      "gap_pct": 36.73870333988212
+    },
+    {
+      "instance_id": "gen-6x6-42-01067",
+      "feasible": true,
+      "makespan": 536,
+      "gap_pct": 24.651162790697676
+    },
+    {
+      "instance_id": "gen-6x6-42-01077",
+      "feasible": true,
+      "makespan": 752,
+      "gap_pct": 37.72893772893773
+    },
+    {
+      "instance_id": "gen-6x6-42-01090",
+      "feasible": true,
+      "makespan": 511,
+      "gap_pct": 34.473684210526315
+    },
+    {
+      "instance_id": "gen-6x6-42-01093",
+      "feasible": true,
+      "makespan": 676,
+      "gap_pct": 42.616033755274266
+    },
+    {
+      "instance_id": "gen-6x6-42-01096",
+      "feasible": true,
+      "makespan": 736,
+      "gap_pct": 52.38095238095239
+    },
+    {
+      "instance_id": "gen-6x6-42-01123",
+      "feasible": true,
+      "makespan": 875,
+      "gap_pct": 55.14184397163121
+    },
+    {
+      "instance_id": "gen-6x6-42-01130",
+      "feasible": true,
+      "makespan": 835,
+      "gap_pct": 61.82170542635659
+    },
+    {
+      "instance_id": "gen-6x6-42-01174",
+      "feasible": true,
+      "makespan": 775,
+      "gap_pct": 37.16814159292036
+    },
+    {
+      "instance_id": "gen-6x6-42-01194",
+      "feasible": true,
+      "makespan": 692,
+      "gap_pct": 40.936863543788185
+    },
+    {
+      "instance_id": "gen-6x6-42-01228",
+      "feasible": true,
+      "makespan": 707,
+      "gap_pct": 45.47325102880658
+    },
+    {
+      "instance_id": "gen-6x6-42-01241",
+      "feasible": true,
+      "makespan": 795,
+      "gap_pct": 63.244353182751546
+    },
+    {
+      "instance_id": "gen-6x6-42-01245",
+      "feasible": true,
+      "makespan": 639,
+      "gap_pct": 41.05960264900662
+    },
+    {
+      "instance_id": "gen-6x6-42-01253",
+      "feasible": true,
+      "makespan": 811,
+      "gap_pct": 44.82142857142858
+    },
+    {
+      "instance_id": "gen-6x6-42-01270",
+      "feasible": true,
+      "makespan": 742,
+      "gap_pct": 52.674897119341566
+    },
+    {
+      "instance_id": "gen-6x6-42-01276",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-01279",
+      "feasible": true,
+      "makespan": 882,
+      "gap_pct": 50.255536626916516
+    },
+    {
+      "instance_id": "gen-6x6-42-01280",
+      "feasible": true,
+      "makespan": 830,
+      "gap_pct": 29.485179407176286
+    },
+    {
+      "instance_id": "gen-6x6-42-01293",
+      "feasible": true,
+      "makespan": 854,
+      "gap_pct": 40.46052631578947
+    },
+    {
+      "instance_id": "gen-6x6-42-01306",
+      "feasible": true,
+      "makespan": 741,
+      "gap_pct": 36.96857670979667
+    },
+    {
+      "instance_id": "gen-6x6-42-01314",
+      "feasible": true,
+      "makespan": 726,
+      "gap_pct": 29.642857142857142
+    },
+    {
+      "instance_id": "gen-6x6-42-01315",
+      "feasible": true,
+      "makespan": 787,
+      "gap_pct": 51.34615384615384
+    },
+    {
+      "instance_id": "gen-6x6-42-01325",
+      "feasible": true,
+      "makespan": 764,
+      "gap_pct": 46.92307692307692
+    },
+    {
+      "instance_id": "gen-6x6-42-01332",
+      "feasible": true,
+      "makespan": 841,
+      "gap_pct": 67.86427145708582
+    },
+    {
+      "instance_id": "gen-6x6-42-01335",
+      "feasible": true,
+      "makespan": 783,
+      "gap_pct": 68.38709677419355
+    },
+    {
+      "instance_id": "gen-6x6-42-01359",
+      "feasible": true,
+      "makespan": 680,
+      "gap_pct": 45.610278372591004
+    },
+    {
+      "instance_id": "gen-6x6-42-01366",
+      "feasible": true,
+      "makespan": 689,
+      "gap_pct": 55.53047404063205
+    },
+    {
+      "instance_id": "gen-6x6-42-01378",
+      "feasible": true,
+      "makespan": 719,
+      "gap_pct": 27.482269503546096
+    },
+    {
+      "instance_id": "gen-6x6-42-01399",
+      "feasible": true,
+      "makespan": 729,
+      "gap_pct": 68.36027713625866
+    },
+    {
+      "instance_id": "gen-6x6-42-01426",
+      "feasible": true,
+      "makespan": 648,
+      "gap_pct": 33.33333333333333
+    },
+    {
+      "instance_id": "gen-6x6-42-01428",
+      "feasible": true,
+      "makespan": 897,
+      "gap_pct": 62.20614828209765
+    },
+    {
+      "instance_id": "gen-6x6-42-01436",
+      "feasible": true,
+      "makespan": 618,
+      "gap_pct": 39.503386004514674
+    },
+    {
+      "instance_id": "gen-6x6-42-01437",
+      "feasible": true,
+      "makespan": 678,
+      "gap_pct": 40.95634095634096
+    },
+    {
+      "instance_id": "gen-6x6-42-01480",
+      "feasible": true,
+      "makespan": 625,
+      "gap_pct": 54.32098765432099
+    },
+    {
+      "instance_id": "gen-6x6-42-01489",
+      "feasible": true,
+      "makespan": 627,
+      "gap_pct": 28.74743326488706
+    },
+    {
+      "instance_id": "gen-6x6-42-01518",
+      "feasible": true,
+      "makespan": 755,
+      "gap_pct": 57.291666666666664
+    },
+    {
+      "instance_id": "gen-6x6-42-01550",
+      "feasible": true,
+      "makespan": 611,
+      "gap_pct": 42.757009345794394
+    },
+    {
+      "instance_id": "gen-6x6-42-01566",
+      "feasible": true,
+      "makespan": 829,
+      "gap_pct": 61.284046692607006
+    },
+    {
+      "instance_id": "gen-6x6-42-01600",
+      "feasible": true,
+      "makespan": 661,
+      "gap_pct": 40.93816631130064
+    },
+    {
+      "instance_id": "gen-6x6-42-01609",
+      "feasible": true,
+      "makespan": 760,
+      "gap_pct": 68.14159292035397
+    },
+    {
+      "instance_id": "gen-6x6-42-01624",
+      "feasible": true,
+      "makespan": 726,
+      "gap_pct": 23.890784982935152
+    },
+    {
+      "instance_id": "gen-6x6-42-01639",
+      "feasible": true,
+      "makespan": 597,
+      "gap_pct": 58.355437665782496
+    },
+    {
+      "instance_id": "gen-6x6-42-01640",
+      "feasible": true,
+      "makespan": 687,
+      "gap_pct": 62.4113475177305
+    },
+    {
+      "instance_id": "gen-6x6-42-01668",
+      "feasible": true,
+      "makespan": 754,
+      "gap_pct": 58.40336134453782
+    },
+    {
+      "instance_id": "gen-6x6-42-01682",
+      "feasible": true,
+      "makespan": 787,
+      "gap_pct": 52.81553398058253
+    },
+    {
+      "instance_id": "gen-6x6-42-01686",
+      "feasible": true,
+      "makespan": 818,
+      "gap_pct": 70.06237006237006
+    },
+    {
+      "instance_id": "gen-6x6-42-01689",
+      "feasible": true,
+      "makespan": 621,
+      "gap_pct": 40.816326530612244
+    },
+    {
+      "instance_id": "gen-6x6-42-01695",
+      "feasible": true,
+      "makespan": 573,
+      "gap_pct": 25.38293216630197
+    },
+    {
+      "instance_id": "gen-6x6-42-01698",
+      "feasible": true,
+      "makespan": 744,
+      "gap_pct": 55.00000000000001
+    },
+    {
+      "instance_id": "gen-6x6-42-01708",
+      "feasible": true,
+      "makespan": 672,
+      "gap_pct": 33.069306930693074
+    },
+    {
+      "instance_id": "gen-6x6-42-01720",
+      "feasible": true,
+      "makespan": 683,
+      "gap_pct": 34.714003944773175
+    },
+    {
+      "instance_id": "gen-6x6-42-01721",
+      "feasible": true,
+      "makespan": 775,
+      "gap_pct": 49.61389961389961
+    },
+    {
+      "instance_id": "gen-6x6-42-01722",
+      "feasible": true,
+      "makespan": 672,
+      "gap_pct": 20.43010752688172
+    },
+    {
+      "instance_id": "gen-6x6-42-01739",
+      "feasible": true,
+      "makespan": 842,
+      "gap_pct": 40.33333333333333
+    },
+    {
+      "instance_id": "gen-6x6-42-01746",
+      "feasible": true,
+      "makespan": 609,
+      "gap_pct": 30.686695278969957
+    },
+    {
+      "instance_id": "gen-6x6-42-01747",
+      "feasible": true,
+      "makespan": 673,
+      "gap_pct": 26.741996233521657
+    },
+    {
+      "instance_id": "gen-6x6-42-01757",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-01763",
+      "feasible": true,
+      "makespan": 842,
+      "gap_pct": 79.14893617021276
+    },
+    {
+      "instance_id": "gen-6x6-42-01767",
+      "feasible": true,
+      "makespan": 666,
+      "gap_pct": 23.562152133580703
+    },
+    {
+      "instance_id": "gen-6x6-42-01776",
+      "feasible": true,
+      "makespan": 858,
+      "gap_pct": 51.056338028169016
+    },
+    {
+      "instance_id": "gen-6x6-42-01798",
+      "feasible": true,
+      "makespan": 799,
+      "gap_pct": 44.48462929475588
+    },
+    {
+      "instance_id": "gen-6x6-42-01808",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-01847",
+      "feasible": true,
+      "makespan": 786,
+      "gap_pct": 69.39655172413794
+    },
+    {
+      "instance_id": "gen-6x6-42-01848",
+      "feasible": true,
+      "makespan": 719,
+      "gap_pct": 36.17424242424242
+    },
+    {
+      "instance_id": "gen-6x6-42-01859",
+      "feasible": true,
+      "makespan": 702,
+      "gap_pct": 53.94736842105263
+    },
+    {
+      "instance_id": "gen-6x6-42-01880",
+      "feasible": true,
+      "makespan": 862,
+      "gap_pct": 59.62962962962963
+    },
+    {
+      "instance_id": "gen-6x6-42-01888",
+      "feasible": true,
+      "makespan": 618,
+      "gap_pct": 46.44549763033176
+    },
+    {
+      "instance_id": "gen-6x6-42-01891",
+      "feasible": true,
+      "makespan": 616,
+      "gap_pct": 32.758620689655174
+    },
+    {
+      "instance_id": "gen-6x6-42-01897",
+      "feasible": true,
+      "makespan": 748,
+      "gap_pct": 43.29501915708812
+    },
+    {
+      "instance_id": "gen-6x6-42-01902",
+      "feasible": true,
+      "makespan": 671,
+      "gap_pct": 49.776785714285715
+    },
+    {
+      "instance_id": "gen-6x6-42-01913",
+      "feasible": true,
+      "makespan": 752,
+      "gap_pct": 42.96577946768061
+    },
+    {
+      "instance_id": "gen-6x6-42-01920",
+      "feasible": true,
+      "makespan": 730,
+      "gap_pct": 38.51992409867172
+    },
+    {
+      "instance_id": "gen-6x6-42-01923",
+      "feasible": true,
+      "makespan": 929,
+      "gap_pct": 76.95238095238095
+    },
+    {
+      "instance_id": "gen-6x6-42-01932",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-01941",
+      "feasible": true,
+      "makespan": 607,
+      "gap_pct": 27.789473684210524
+    },
+    {
+      "instance_id": "gen-6x6-42-01952",
+      "feasible": true,
+      "makespan": 773,
+      "gap_pct": 44.21641791044777
+    },
+    {
+      "instance_id": "gen-6x6-42-01984",
+      "feasible": true,
+      "makespan": 698,
+      "gap_pct": 29.02033271719039
+    },
+    {
+      "instance_id": "gen-6x6-42-02002",
+      "feasible": true,
+      "makespan": 639,
+      "gap_pct": 35.095137420718814
+    },
+    {
+      "instance_id": "gen-6x6-42-02009",
+      "feasible": true,
+      "makespan": 684,
+      "gap_pct": 58.333333333333336
+    },
+    {
+      "instance_id": "gen-6x6-42-02022",
+      "feasible": true,
+      "makespan": 621,
+      "gap_pct": 38.61607142857143
+    },
+    {
+      "instance_id": "gen-6x6-42-02031",
+      "feasible": true,
+      "makespan": 645,
+      "gap_pct": 29.258517034068138
+    },
+    {
+      "instance_id": "gen-6x6-42-02033",
+      "feasible": true,
+      "makespan": 528,
+      "gap_pct": 15.536105032822759
+    },
+    {
+      "instance_id": "gen-6x6-42-02036",
+      "feasible": true,
+      "makespan": 630,
+      "gap_pct": 44.4954128440367
+    },
+    {
+      "instance_id": "gen-6x6-42-02040",
+      "feasible": true,
+      "makespan": 589,
+      "gap_pct": 34.16856492027335
+    },
+    {
+      "instance_id": "gen-6x6-42-02041",
+      "feasible": true,
+      "makespan": 843,
+      "gap_pct": 69.27710843373494
+    },
+    {
+      "instance_id": "gen-6x6-42-02058",
+      "feasible": true,
+      "makespan": 790,
+      "gap_pct": 57.684630738522955
+    },
+    {
+      "instance_id": "gen-6x6-42-02069",
+      "feasible": true,
+      "makespan": 560,
+      "gap_pct": 25.56053811659193
+    },
+    {
+      "instance_id": "gen-6x6-42-02076",
+      "feasible": true,
+      "makespan": 593,
+      "gap_pct": 26.98072805139186
+    },
+    {
+      "instance_id": "gen-6x6-42-02079",
+      "feasible": true,
+      "makespan": 753,
+      "gap_pct": 51.50905432595574
+    },
+    {
+      "instance_id": "gen-6x6-42-02082",
+      "feasible": true,
+      "makespan": 634,
+      "gap_pct": 28.34008097165992
+    },
+    {
+      "instance_id": "gen-6x6-42-02103",
+      "feasible": true,
+      "makespan": 715,
+      "gap_pct": 63.99082568807339
+    },
+    {
+      "instance_id": "gen-6x6-42-02111",
+      "feasible": true,
+      "makespan": 585,
+      "gap_pct": 35.41666666666667
+    },
+    {
+      "instance_id": "gen-6x6-42-02112",
+      "feasible": true,
+      "makespan": 754,
+      "gap_pct": 42.26415094339623
+    },
+    {
+      "instance_id": "gen-6x6-42-02122",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-02139",
+      "feasible": true,
+      "makespan": 711,
+      "gap_pct": 47.20496894409938
+    },
+    {
+      "instance_id": "gen-6x6-42-02142",
+      "feasible": true,
+      "makespan": 731,
+      "gap_pct": 23.898305084745765
+    },
+    {
+      "instance_id": "gen-6x6-42-02144",
+      "feasible": true,
+      "makespan": 791,
+      "gap_pct": 57.884231536926144
+    },
+    {
+      "instance_id": "gen-6x6-42-02156",
+      "feasible": true,
+      "makespan": 776,
+      "gap_pct": 34.95652173913044
+    },
+    {
+      "instance_id": "gen-6x6-42-02167",
+      "feasible": true,
+      "makespan": 732,
+      "gap_pct": 48.78048780487805
+    },
+    {
+      "instance_id": "gen-6x6-42-02186",
+      "feasible": true,
+      "makespan": 691,
+      "gap_pct": 53.55555555555556
+    },
+    {
+      "instance_id": "gen-6x6-42-02189",
+      "feasible": true,
+      "makespan": 834,
+      "gap_pct": 47.349823321554766
+    },
+    {
+      "instance_id": "gen-6x6-42-02200",
+      "feasible": true,
+      "makespan": 672,
+      "gap_pct": 33.33333333333333
+    },
+    {
+      "instance_id": "gen-6x6-42-02216",
+      "feasible": true,
+      "makespan": 810,
+      "gap_pct": 45.68345323741007
+    },
+    {
+      "instance_id": "gen-6x6-42-02270",
+      "feasible": true,
+      "makespan": 815,
+      "gap_pct": 55.831739961759084
+    },
+    {
+      "instance_id": "gen-6x6-42-02275",
+      "feasible": true,
+      "makespan": 782,
+      "gap_pct": 40.394973070017954
+    },
+    {
+      "instance_id": "gen-6x6-42-02280",
+      "feasible": true,
+      "makespan": 706,
+      "gap_pct": 28.59744990892532
+    },
+    {
+      "instance_id": "gen-6x6-42-02314",
+      "feasible": true,
+      "makespan": 737,
+      "gap_pct": 29.29824561403509
+    },
+    {
+      "instance_id": "gen-6x6-42-02317",
+      "feasible": true,
+      "makespan": 793,
+      "gap_pct": 44.44444444444444
+    },
+    {
+      "instance_id": "gen-6x6-42-02352",
+      "feasible": true,
+      "makespan": 661,
+      "gap_pct": 24.24812030075188
+    },
+    {
+      "instance_id": "gen-6x6-42-02361",
+      "feasible": true,
+      "makespan": 778,
+      "gap_pct": 47.90874524714829
+    },
+    {
+      "instance_id": "gen-6x6-42-02381",
+      "feasible": true,
+      "makespan": 589,
+      "gap_pct": 19.230769230769234
+    },
+    {
+      "instance_id": "gen-6x6-42-02399",
+      "feasible": true,
+      "makespan": 646,
+      "gap_pct": 36.0
+    },
+    {
+      "instance_id": "gen-6x6-42-02404",
+      "feasible": true,
+      "makespan": 706,
+      "gap_pct": 51.17773019271949
+    },
+    {
+      "instance_id": "gen-6x6-42-02409",
+      "feasible": true,
+      "makespan": 642,
+      "gap_pct": 39.565217391304344
+    },
+    {
+      "instance_id": "gen-6x6-42-02423",
+      "feasible": true,
+      "makespan": 649,
+      "gap_pct": 38.37953091684435
+    },
+    {
+      "instance_id": "gen-6x6-42-02426",
+      "feasible": true,
+      "makespan": 714,
+      "gap_pct": 42.51497005988024
+    },
+    {
+      "instance_id": "gen-6x6-42-02438",
+      "feasible": true,
+      "makespan": 773,
+      "gap_pct": 40.54545454545455
+    },
+    {
+      "instance_id": "gen-6x6-42-02444",
+      "feasible": true,
+      "makespan": 828,
+      "gap_pct": 49.458483754512635
+    },
+    {
+      "instance_id": "gen-6x6-42-02448",
+      "feasible": true,
+      "makespan": 656,
+      "gap_pct": 27.378640776699033
+    },
+    {
+      "instance_id": "gen-6x6-42-02455",
+      "feasible": true,
+      "makespan": 675,
+      "gap_pct": 38.036809815950924
+    },
+    {
+      "instance_id": "gen-6x6-42-02464",
+      "feasible": true,
+      "makespan": 743,
+      "gap_pct": 55.43933054393305
+    },
+    {
+      "instance_id": "gen-6x6-42-02472",
+      "feasible": true,
+      "makespan": 640,
+      "gap_pct": 25.49019607843137
+    },
+    {
+      "instance_id": "gen-6x6-42-02473",
+      "feasible": true,
+      "makespan": 666,
+      "gap_pct": 32.669322709163346
+    },
+    {
+      "instance_id": "gen-6x6-42-02487",
+      "feasible": true,
+      "makespan": 838,
+      "gap_pct": 69.2929292929293
+    },
+    {
+      "instance_id": "gen-6x6-42-02507",
+      "feasible": true,
+      "makespan": 767,
+      "gap_pct": 29.124579124579125
+    },
+    {
+      "instance_id": "gen-6x6-42-02510",
+      "feasible": true,
+      "makespan": 745,
+      "gap_pct": 42.72030651340996
+    },
+    {
+      "instance_id": "gen-6x6-42-02537",
+      "feasible": true,
+      "makespan": 707,
+      "gap_pct": 45.17453798767967
+    },
+    {
+      "instance_id": "gen-6x6-42-02541",
+      "feasible": true,
+      "makespan": 582,
+      "gap_pct": 31.674208144796378
+    },
+    {
+      "instance_id": "gen-6x6-42-02550",
+      "feasible": true,
+      "makespan": 797,
+      "gap_pct": 52.09923664122137
+    },
+    {
+      "instance_id": "gen-6x6-42-02565",
+      "feasible": true,
+      "makespan": 637,
+      "gap_pct": 38.17787418655097
+    },
+    {
+      "instance_id": "gen-6x6-42-02582",
+      "feasible": true,
+      "makespan": 642,
+      "gap_pct": 27.12871287128713
+    },
+    {
+      "instance_id": "gen-6x6-42-02583",
+      "feasible": true,
+      "makespan": 642,
+      "gap_pct": 51.77304964539007
+    },
+    {
+      "instance_id": "gen-6x6-42-02585",
+      "feasible": true,
+      "makespan": 636,
+      "gap_pct": 25.196850393700785
+    },
+    {
+      "instance_id": "gen-6x6-42-02591",
+      "feasible": true,
+      "makespan": 506,
+      "gap_pct": 36.75675675675676
+    },
+    {
+      "instance_id": "gen-6x6-42-02604",
+      "feasible": true,
+      "makespan": 874,
+      "gap_pct": 73.4126984126984
+    },
+    {
+      "instance_id": "gen-6x6-42-02610",
+      "feasible": true,
+      "makespan": 676,
+      "gap_pct": 36.016096579476866
+    },
+    {
+      "instance_id": "gen-6x6-42-02612",
+      "feasible": true,
+      "makespan": 621,
+      "gap_pct": 32.12765957446809
+    },
+    {
+      "instance_id": "gen-6x6-42-02614",
+      "feasible": true,
+      "makespan": 630,
+      "gap_pct": 47.540983606557376
+    },
+    {
+      "instance_id": "gen-6x6-42-02636",
+      "feasible": true,
+      "makespan": 699,
+      "gap_pct": 41.497975708502025
+    },
+    {
+      "instance_id": "gen-6x6-42-02638",
+      "feasible": true,
+      "makespan": 619,
+      "gap_pct": 31.422505307855626
+    },
+    {
+      "instance_id": "gen-6x6-42-02643",
+      "feasible": true,
+      "makespan": 791,
+      "gap_pct": 59.154929577464785
+    },
+    {
+      "instance_id": "gen-6x6-42-02688",
+      "feasible": true,
+      "makespan": 756,
+      "gap_pct": 33.56890459363957
+    },
+    {
+      "instance_id": "gen-6x6-42-02691",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-02699",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-02726",
+      "feasible": true,
+      "makespan": 763,
+      "gap_pct": 41.55844155844156
+    },
+    {
+      "instance_id": "gen-6x6-42-02741",
+      "feasible": true,
+      "makespan": 676,
+      "gap_pct": 28.517110266159694
+    },
+    {
+      "instance_id": "gen-6x6-42-02746",
+      "feasible": true,
+      "makespan": 660,
+      "gap_pct": 46.017699115044245
+    },
+    {
+      "instance_id": "gen-6x6-42-02756",
+      "feasible": true,
+      "makespan": 782,
+      "gap_pct": 39.64285714285714
+    },
+    {
+      "instance_id": "gen-6x6-42-02772",
+      "feasible": true,
+      "makespan": 731,
+      "gap_pct": 40.30710172744721
+    },
+    {
+      "instance_id": "gen-6x6-42-02775",
+      "feasible": true,
+      "makespan": 645,
+      "gap_pct": 39.30885529157667
+    },
+    {
+      "instance_id": "gen-6x6-42-02788",
+      "feasible": true,
+      "makespan": 831,
+      "gap_pct": 92.80742459396751
+    },
+    {
+      "instance_id": "gen-6x6-42-02796",
+      "feasible": true,
+      "makespan": 700,
+      "gap_pct": 47.99154334038055
+    },
+    {
+      "instance_id": "gen-6x6-42-02798",
+      "feasible": true,
+      "makespan": 675,
+      "gap_pct": 27.11864406779661
+    },
+    {
+      "instance_id": "gen-6x6-42-02841",
+      "feasible": true,
+      "makespan": 648,
+      "gap_pct": 24.37619961612284
+    },
+    {
+      "instance_id": "gen-6x6-42-02847",
+      "feasible": true,
+      "makespan": 656,
+      "gap_pct": 36.666666666666664
+    },
+    {
+      "instance_id": "gen-6x6-42-02853",
+      "feasible": true,
+      "makespan": 719,
+      "gap_pct": 64.15525114155251
+    },
+    {
+      "instance_id": "gen-6x6-42-02860",
+      "feasible": true,
+      "makespan": 631,
+      "gap_pct": 35.11777301927195
+    },
+    {
+      "instance_id": "gen-6x6-42-02863",
+      "feasible": true,
+      "makespan": 698,
+      "gap_pct": 55.111111111111114
+    },
+    {
+      "instance_id": "gen-6x6-42-02870",
+      "feasible": true,
+      "makespan": 621,
+      "gap_pct": 35.886214442013134
+    },
+    {
+      "instance_id": "gen-6x6-42-02877",
+      "feasible": true,
+      "makespan": 618,
+      "gap_pct": 20.233463035019454
+    },
+    {
+      "instance_id": "gen-6x6-42-02886",
+      "feasible": true,
+      "makespan": 779,
+      "gap_pct": 55.800000000000004
+    },
+    {
+      "instance_id": "gen-6x6-42-02889",
+      "feasible": true,
+      "makespan": 575,
+      "gap_pct": 27.77777777777778
+    },
+    {
+      "instance_id": "gen-6x6-42-02899",
+      "feasible": true,
+      "makespan": 637,
+      "gap_pct": 60.858585858585855
+    },
+    {
+      "instance_id": "gen-6x6-42-02903",
+      "feasible": true,
+      "makespan": 595,
+      "gap_pct": 32.516703786191535
+    },
+    {
+      "instance_id": "gen-6x6-42-02905",
+      "feasible": true,
+      "makespan": 648,
+      "gap_pct": 45.61797752808989
+    },
+    {
+      "instance_id": "gen-6x6-42-02908",
+      "feasible": true,
+      "makespan": 604,
+      "gap_pct": 36.3431151241535
+    },
+    {
+      "instance_id": "gen-6x6-42-02924",
+      "feasible": true,
+      "makespan": 742,
+      "gap_pct": 45.20547945205479
+    },
+    {
+      "instance_id": "gen-6x6-42-02928",
+      "feasible": true,
+      "makespan": 693,
+      "gap_pct": 32.758620689655174
+    },
+    {
+      "instance_id": "gen-6x6-42-02965",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-02968",
+      "feasible": true,
+      "makespan": 687,
+      "gap_pct": 58.66050808314087
+    },
+    {
+      "instance_id": "gen-6x6-42-02969",
+      "feasible": true,
+      "makespan": 676,
+      "gap_pct": 47.276688453159046
+    },
+    {
+      "instance_id": "gen-6x6-42-02971",
+      "feasible": true,
+      "makespan": 740,
+      "gap_pct": 65.91928251121077
+    },
+    {
+      "instance_id": "gen-6x6-42-02976",
+      "feasible": true,
+      "makespan": 724,
+      "gap_pct": 53.06553911205074
+    },
+    {
+      "instance_id": "gen-6x6-42-02979",
+      "feasible": true,
+      "makespan": 657,
+      "gap_pct": 11.73469387755102
+    },
+    {
+      "instance_id": "gen-6x6-42-02982",
+      "feasible": true,
+      "makespan": 702,
+      "gap_pct": 58.465011286681715
+    },
+    {
+      "instance_id": "gen-6x6-42-02996",
+      "feasible": true,
+      "makespan": 761,
+      "gap_pct": 84.26150121065376
+    },
+    {
+      "instance_id": "gen-6x6-42-03003",
+      "feasible": true,
+      "makespan": 816,
+      "gap_pct": 44.424778761061944
+    },
+    {
+      "instance_id": "gen-6x6-42-03007",
+      "feasible": true,
+      "makespan": 713,
+      "gap_pct": 36.32887189292543
+    },
+    {
+      "instance_id": "gen-6x6-42-03009",
+      "feasible": true,
+      "makespan": 648,
+      "gap_pct": 43.68070953436807
+    },
+    {
+      "instance_id": "gen-6x6-42-03010",
+      "feasible": true,
+      "makespan": 637,
+      "gap_pct": 22.5
+    },
+    {
+      "instance_id": "gen-6x6-42-03013",
+      "feasible": true,
+      "makespan": 658,
+      "gap_pct": 34.83606557377049
+    },
+    {
+      "instance_id": "gen-6x6-42-03014",
+      "feasible": true,
+      "makespan": 676,
+      "gap_pct": 59.05882352941176
+    },
+    {
+      "instance_id": "gen-6x6-42-03028",
+      "feasible": true,
+      "makespan": 728,
+      "gap_pct": 45.89178356713427
+    },
+    {
+      "instance_id": "gen-6x6-42-03051",
+      "feasible": true,
+      "makespan": 559,
+      "gap_pct": 45.95300261096606
+    },
+    {
+      "instance_id": "gen-6x6-42-03072",
+      "feasible": true,
+      "makespan": 747,
+      "gap_pct": 44.20849420849421
+    },
+    {
+      "instance_id": "gen-6x6-42-03087",
+      "feasible": true,
+      "makespan": 459,
+      "gap_pct": 31.896551724137932
+    },
+    {
+      "instance_id": "gen-6x6-42-03129",
+      "feasible": true,
+      "makespan": 750,
+      "gap_pct": 48.80952380952381
+    },
+    {
+      "instance_id": "gen-6x6-42-03132",
+      "feasible": true,
+      "makespan": 633,
+      "gap_pct": 48.24355971896955
+    },
+    {
+      "instance_id": "gen-6x6-42-03143",
+      "feasible": true,
+      "makespan": 614,
+      "gap_pct": 37.360178970917225
+    },
+    {
+      "instance_id": "gen-6x6-42-03155",
+      "feasible": true,
+      "makespan": 706,
+      "gap_pct": 48.319327731092436
+    },
+    {
+      "instance_id": "gen-6x6-42-03161",
+      "feasible": true,
+      "makespan": 697,
+      "gap_pct": 36.93516699410609
+    },
+    {
+      "instance_id": "gen-6x6-42-03172",
+      "feasible": true,
+      "makespan": 833,
+      "gap_pct": 36.7816091954023
+    },
+    {
+      "instance_id": "gen-6x6-42-03179",
+      "feasible": true,
+      "makespan": 708,
+      "gap_pct": 41.883767535070135
+    },
+    {
+      "instance_id": "gen-6x6-42-03184",
+      "feasible": true,
+      "makespan": 645,
+      "gap_pct": 62.06030150753769
+    },
+    {
+      "instance_id": "gen-6x6-42-03188",
+      "feasible": true,
+      "makespan": 623,
+      "gap_pct": 36.02620087336245
+    },
+    {
+      "instance_id": "gen-6x6-42-03190",
+      "feasible": true,
+      "makespan": 803,
+      "gap_pct": 38.92733564013841
+    },
+    {
+      "instance_id": "gen-6x6-42-03208",
+      "feasible": true,
+      "makespan": 739,
+      "gap_pct": 51.124744376278116
+    },
+    {
+      "instance_id": "gen-6x6-42-03214",
+      "feasible": true,
+      "makespan": 763,
+      "gap_pct": 48.44357976653696
+    },
+    {
+      "instance_id": "gen-6x6-42-03230",
+      "feasible": true,
+      "makespan": 813,
+      "gap_pct": 45.960502692998205
+    },
+    {
+      "instance_id": "gen-6x6-42-03252",
+      "feasible": true,
+      "makespan": 787,
+      "gap_pct": 38.556338028169016
+    },
+    {
+      "instance_id": "gen-6x6-42-03253",
+      "feasible": true,
+      "makespan": 785,
+      "gap_pct": 51.83752417794971
+    },
+    {
+      "instance_id": "gen-6x6-42-03261",
+      "feasible": true,
+      "makespan": 700,
+      "gap_pct": 40.28056112224449
+    },
+    {
+      "instance_id": "gen-6x6-42-03282",
+      "feasible": true,
+      "makespan": 673,
+      "gap_pct": 55.78703703703704
+    },
+    {
+      "instance_id": "gen-6x6-42-03286",
+      "feasible": true,
+      "makespan": 800,
+      "gap_pct": 33.11148086522462
+    },
+    {
+      "instance_id": "gen-6x6-42-03291",
+      "feasible": true,
+      "makespan": 759,
+      "gap_pct": 31.770833333333332
+    },
+    {
+      "instance_id": "gen-6x6-42-03295",
+      "feasible": true,
+      "makespan": 745,
+      "gap_pct": 46.36542239685658
+    },
+    {
+      "instance_id": "gen-6x6-42-03312",
+      "feasible": true,
+      "makespan": 732,
+      "gap_pct": 32.608695652173914
+    },
+    {
+      "instance_id": "gen-6x6-42-03313",
+      "feasible": true,
+      "makespan": 699,
+      "gap_pct": 37.59842519685039
+    },
+    {
+      "instance_id": "gen-6x6-42-03314",
+      "feasible": true,
+      "makespan": 649,
+      "gap_pct": 36.91983122362869
+    },
+    {
+      "instance_id": "gen-6x6-42-03315",
+      "feasible": true,
+      "makespan": 557,
+      "gap_pct": 22.687224669603523
+    },
+    {
+      "instance_id": "gen-6x6-42-03316",
+      "feasible": true,
+      "makespan": 620,
+      "gap_pct": 33.33333333333333
+    }
+  ]
+}

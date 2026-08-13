@@ -1,0 +1,1118 @@
+{
+  "stats": {
+    "n": 123,
+    "feasible_rate": 0.04065040650406504,
+    "avg_gap_pct": 67.02108874004185,
+    "best_gap_pct": 27.48735244519393,
+    "total_time_s": 27228.379542589188
+  },
+  "results": [
+    {
+      "instance": "ft06",
+      "n": 6,
+      "m": 6,
+      "best_known": 55,
+      "model_makespan": 149,
+      "gap_pct": 170.9090909090909,
+      "feasible": true
+    },
+    {
+      "instance": "ft10",
+      "n": 10,
+      "m": 10,
+      "best_known": 930,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ft20",
+      "n": 20,
+      "m": 5,
+      "best_known": 1165,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la01",
+      "n": 10,
+      "m": 5,
+      "best_known": 666,
+      "model_makespan": 911,
+      "gap_pct": 36.786786786786784,
+      "feasible": true
+    },
+    {
+      "instance": "la02",
+      "n": 10,
+      "m": 5,
+      "best_known": 655,
+      "model_makespan": 1038,
+      "gap_pct": 58.473282442748086,
+      "feasible": true
+    },
+    {
+      "instance": "la03",
+      "n": 10,
+      "m": 5,
+      "best_known": 597,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la04",
+      "n": 10,
+      "m": 5,
+      "best_known": 590,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la05",
+      "n": 10,
+      "m": 5,
+      "best_known": 593,
+      "model_makespan": 756,
+      "gap_pct": 27.48735244519393,
+      "feasible": true
+    },
+    {
+      "instance": "la06",
+      "n": 15,
+      "m": 5,
+      "best_known": 926,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la07",
+      "n": 15,
+      "m": 5,
+      "best_known": 890,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la08",
+      "n": 15,
+      "m": 5,
+      "best_known": 863,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la09",
+      "n": 15,
+      "m": 5,
+      "best_known": 951,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la10",
+      "n": 15,
+      "m": 5,
+      "best_known": 958,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la11",
+      "n": 20,
+      "m": 5,
+      "best_known": 1222,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la12",
+      "n": 20,
+      "m": 5,
+      "best_known": 1039,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la13",
+      "n": 20,
+      "m": 5,
+      "best_known": 1150,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la14",
+      "n": 20,
+      "m": 5,
+      "best_known": 1292,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la15",
+      "n": 20,
+      "m": 5,
+      "best_known": 1207,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la16",
+      "n": 10,
+      "m": 10,
+      "best_known": 945,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la17",
+      "n": 10,
+      "m": 10,
+      "best_known": 784,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la18",
+      "n": 10,
+      "m": 10,
+      "best_known": 848,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la19",
+      "n": 10,
+      "m": 10,
+      "best_known": 842,
+      "model_makespan": 1191,
+      "gap_pct": 41.448931116389545,
+      "feasible": true
+    },
+    {
+      "instance": "la20",
+      "n": 10,
+      "m": 10,
+      "best_known": 902,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la21",
+      "n": 15,
+      "m": 10,
+      "best_known": 1046,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la22",
+      "n": 15,
+      "m": 10,
+      "best_known": 927,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la23",
+      "n": 15,
+      "m": 10,
+      "best_known": 1032,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la24",
+      "n": 15,
+      "m": 10,
+      "best_known": 935,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la25",
+      "n": 15,
+      "m": 10,
+      "best_known": 977,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la26",
+      "n": 20,
+      "m": 10,
+      "best_known": 1218,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la27",
+      "n": 20,
+      "m": 10,
+      "best_known": 1235,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la28",
+      "n": 20,
+      "m": 10,
+      "best_known": 1216,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la29",
+      "n": 20,
+      "m": 10,
+      "best_known": 1152,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la30",
+      "n": 20,
+      "m": 10,
+      "best_known": 1355,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la31",
+      "n": 30,
+      "m": 10,
+      "best_known": 1784,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la32",
+      "n": 30,
+      "m": 10,
+      "best_known": 1850,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la33",
+      "n": 30,
+      "m": 10,
+      "best_known": 1719,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la34",
+      "n": 30,
+      "m": 10,
+      "best_known": 1721,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la35",
+      "n": 30,
+      "m": 10,
+      "best_known": 1888,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la36",
+      "n": 15,
+      "m": 15,
+      "best_known": 1268,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la37",
+      "n": 15,
+      "m": 15,
+      "best_known": 1397,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la38",
+      "n": 15,
+      "m": 15,
+      "best_known": 1196,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la39",
+      "n": 15,
+      "m": 15,
+      "best_known": 1233,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "la40",
+      "n": 15,
+      "m": 15,
+      "best_known": 1222,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta01",
+      "n": 15,
+      "m": 15,
+      "best_known": 1231,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta02",
+      "n": 15,
+      "m": 15,
+      "best_known": 1244,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta03",
+      "n": 15,
+      "m": 15,
+      "best_known": 1218,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta04",
+      "n": 15,
+      "m": 15,
+      "best_known": 1175,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta05",
+      "n": 15,
+      "m": 15,
+      "best_known": 1224,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta06",
+      "n": 15,
+      "m": 15,
+      "best_known": 1238,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta07",
+      "n": 15,
+      "m": 15,
+      "best_known": 1227,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta08",
+      "n": 15,
+      "m": 15,
+      "best_known": 1217,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta09",
+      "n": 15,
+      "m": 15,
+      "best_known": 1274,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta10",
+      "n": 15,
+      "m": 15,
+      "best_known": 1241,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta11",
+      "n": 20,
+      "m": 15,
+      "best_known": 1357,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta12",
+      "n": 20,
+      "m": 15,
+      "best_known": 1367,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta13",
+      "n": 20,
+      "m": 15,
+      "best_known": 1342,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta14",
+      "n": 20,
+      "m": 15,
+      "best_known": 1345,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta15",
+      "n": 20,
+      "m": 15,
+      "best_known": 1339,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta16",
+      "n": 20,
+      "m": 15,
+      "best_known": 1360,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta17",
+      "n": 20,
+      "m": 15,
+      "best_known": 1462,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta18",
+      "n": 20,
+      "m": 15,
+      "best_known": 1396,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta19",
+      "n": 20,
+      "m": 15,
+      "best_known": 1332,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta20",
+      "n": 20,
+      "m": 15,
+      "best_known": 1348,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta21",
+      "n": 20,
+      "m": 20,
+      "best_known": 1642,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta22",
+      "n": 20,
+      "m": 20,
+      "best_known": 1600,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta23",
+      "n": 20,
+      "m": 20,
+      "best_known": 1557,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta24",
+      "n": 20,
+      "m": 20,
+      "best_known": 1644,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta25",
+      "n": 20,
+      "m": 20,
+      "best_known": 1595,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta26",
+      "n": 20,
+      "m": 20,
+      "best_known": 1643,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta27",
+      "n": 20,
+      "m": 20,
+      "best_known": 1680,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta28",
+      "n": 20,
+      "m": 20,
+      "best_known": 1603,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta29",
+      "n": 20,
+      "m": 20,
+      "best_known": 1625,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta30",
+      "n": 20,
+      "m": 20,
+      "best_known": 1584,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta31",
+      "n": 30,
+      "m": 15,
+      "best_known": 1764,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta32",
+      "n": 30,
+      "m": 15,
+      "best_known": 1784,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta33",
+      "n": 30,
+      "m": 15,
+      "best_known": 1791,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta34",
+      "n": 30,
+      "m": 15,
+      "best_known": 1829,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta35",
+      "n": 30,
+      "m": 15,
+      "best_known": 2007,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta36",
+      "n": 30,
+      "m": 15,
+      "best_known": 1819,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta37",
+      "n": 30,
+      "m": 15,
+      "best_known": 1771,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta38",
+      "n": 30,
+      "m": 15,
+      "best_known": 1673,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta39",
+      "n": 30,
+      "m": 15,
+      "best_known": 1795,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta40",
+      "n": 30,
+      "m": 15,
+      "best_known": 1669,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta41",
+      "n": 30,
+      "m": 20,
+      "best_known": 2005,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta42",
+      "n": 30,
+      "m": 20,
+      "best_known": 1937,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta43",
+      "n": 30,
+      "m": 20,
+      "best_known": 1846,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta44",
+      "n": 30,
+      "m": 20,
+      "best_known": 1979,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta45",
+      "n": 30,
+      "m": 20,
+      "best_known": 2000,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta46",
+      "n": 30,
+      "m": 20,
+      "best_known": 2004,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta47",
+      "n": 30,
+      "m": 20,
+      "best_known": 1889,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta48",
+      "n": 30,
+      "m": 20,
+      "best_known": 1937,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta49",
+      "n": 30,
+      "m": 20,
+      "best_known": 1961,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta50",
+      "n": 30,
+      "m": 20,
+      "best_known": 1923,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta51",
+      "n": 50,
+      "m": 15,
+      "best_known": 2760,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta52",
+      "n": 50,
+      "m": 15,
+      "best_known": 2756,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta53",
+      "n": 50,
+      "m": 15,
+      "best_known": 2717,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta54",
+      "n": 50,
+      "m": 15,
+      "best_known": 2839,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta55",
+      "n": 50,
+      "m": 15,
+      "best_known": 2679,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta56",
+      "n": 50,
+      "m": 15,
+      "best_known": 2781,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta57",
+      "n": 50,
+      "m": 15,
+      "best_known": 2943,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta58",
+      "n": 50,
+      "m": 15,
+      "best_known": 2885,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta59",
+      "n": 50,
+      "m": 15,
+      "best_known": 2655,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta60",
+      "n": 50,
+      "m": 15,
+      "best_known": 2723,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta61",
+      "n": 50,
+      "m": 20,
+      "best_known": 2868,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta62",
+      "n": 50,
+      "m": 20,
+      "best_known": 2869,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta63",
+      "n": 50,
+      "m": 20,
+      "best_known": 2755,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta64",
+      "n": 50,
+      "m": 20,
+      "best_known": 2702,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta65",
+      "n": 50,
+      "m": 20,
+      "best_known": 2725,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta66",
+      "n": 50,
+      "m": 20,
+      "best_known": 2845,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta67",
+      "n": 50,
+      "m": 20,
+      "best_known": 2825,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta68",
+      "n": 50,
+      "m": 20,
+      "best_known": 2784,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta69",
+      "n": 50,
+      "m": 20,
+      "best_known": 3071,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta70",
+      "n": 50,
+      "m": 20,
+      "best_known": 2995,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta71",
+      "n": 100,
+      "m": 20,
+      "best_known": 5464,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta72",
+      "n": 100,
+      "m": 20,
+      "best_known": 5181,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta73",
+      "n": 100,
+      "m": 20,
+      "best_known": 5568,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta74",
+      "n": 100,
+      "m": 20,
+      "best_known": 5339,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta75",
+      "n": 100,
+      "m": 20,
+      "best_known": 5392,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta76",
+      "n": 100,
+      "m": 20,
+      "best_known": 5342,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta77",
+      "n": 100,
+      "m": 20,
+      "best_known": 5436,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta78",
+      "n": 100,
+      "m": 20,
+      "best_known": 5394,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta79",
+      "n": 100,
+      "m": 20,
+      "best_known": 5358,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    },
+    {
+      "instance": "ta80",
+      "n": 100,
+      "m": 20,
+      "best_known": 5183,
+      "model_makespan": null,
+      "gap_pct": null,
+      "feasible": false
+    }
+  ]
+}

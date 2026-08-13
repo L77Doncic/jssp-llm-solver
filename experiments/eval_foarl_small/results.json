@@ -1,0 +1,376 @@
+{
+  "stats": {
+    "n": 60,
+    "feasible_rate": 0.75,
+    "avg_gap_pct": 29.69172977646472,
+    "best_gap_pct": 9.012875536480687,
+    "avg_makespan": 652.4666666666667,
+    "min_makespan": 459,
+    "max_makespan": 881,
+    "avg_gen_time_per_sample_s": 8.982279911260896,
+    "n_samples_bon": 8,
+    "total_wall_time_s": 4312.219822254032
+  },
+  "per_instance": [
+    {
+      "instance_id": "gen-6x6-42-00026",
+      "feasible": true,
+      "makespan": 688,
+      "gap_pct": 45.76271186440678
+    },
+    {
+      "instance_id": "gen-6x6-42-00037",
+      "feasible": true,
+      "makespan": 620,
+      "gap_pct": 12.318840579710146
+    },
+    {
+      "instance_id": "gen-6x6-42-00044",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00071",
+      "feasible": true,
+      "makespan": 603,
+      "gap_pct": 38.94009216589861
+    },
+    {
+      "instance_id": "gen-6x6-42-00075",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00083",
+      "feasible": true,
+      "makespan": 621,
+      "gap_pct": 18.06083650190114
+    },
+    {
+      "instance_id": "gen-6x6-42-00095",
+      "feasible": true,
+      "makespan": 797,
+      "gap_pct": 42.831541218637994
+    },
+    {
+      "instance_id": "gen-6x6-42-00102",
+      "feasible": true,
+      "makespan": 680,
+      "gap_pct": 30.268199233716476
+    },
+    {
+      "instance_id": "gen-6x6-42-00110",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00117",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00141",
+      "feasible": true,
+      "makespan": 459,
+      "gap_pct": 12.224938875305623
+    },
+    {
+      "instance_id": "gen-6x6-42-00162",
+      "feasible": true,
+      "makespan": 508,
+      "gap_pct": 9.012875536480687
+    },
+    {
+      "instance_id": "gen-6x6-42-00168",
+      "feasible": true,
+      "makespan": 706,
+      "gap_pct": 11.35646687697161
+    },
+    {
+      "instance_id": "gen-6x6-42-00175",
+      "feasible": true,
+      "makespan": 687,
+      "gap_pct": 37.95180722891566
+    },
+    {
+      "instance_id": "gen-6x6-42-00179",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00185",
+      "feasible": true,
+      "makespan": 554,
+      "gap_pct": 31.59144893111639
+    },
+    {
+      "instance_id": "gen-6x6-42-00197",
+      "feasible": true,
+      "makespan": 479,
+      "gap_pct": 12.177985948477751
+    },
+    {
+      "instance_id": "gen-6x6-42-00212",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00227",
+      "feasible": true,
+      "makespan": 685,
+      "gap_pct": 50.881057268722465
+    },
+    {
+      "instance_id": "gen-6x6-42-00232",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00250",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00270",
+      "feasible": true,
+      "makespan": 725,
+      "gap_pct": 35.51401869158878
+    },
+    {
+      "instance_id": "gen-6x6-42-00291",
+      "feasible": true,
+      "makespan": 771,
+      "gap_pct": 28.286189683860236
+    },
+    {
+      "instance_id": "gen-6x6-42-00305",
+      "feasible": true,
+      "makespan": 497,
+      "gap_pct": 26.785714285714285
+    },
+    {
+      "instance_id": "gen-6x6-42-00308",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00339",
+      "feasible": true,
+      "makespan": 527,
+      "gap_pct": 12.127659574468085
+    },
+    {
+      "instance_id": "gen-6x6-42-00340",
+      "feasible": true,
+      "makespan": 498,
+      "gap_pct": 21.463414634146343
+    },
+    {
+      "instance_id": "gen-6x6-42-00344",
+      "feasible": true,
+      "makespan": 698,
+      "gap_pct": 31.203007518796994
+    },
+    {
+      "instance_id": "gen-6x6-42-00363",
+      "feasible": true,
+      "makespan": 607,
+      "gap_pct": 15.619047619047619
+    },
+    {
+      "instance_id": "gen-6x6-42-00386",
+      "feasible": true,
+      "makespan": 702,
+      "gap_pct": 36.310679611650485
+    },
+    {
+      "instance_id": "gen-6x6-42-00400",
+      "feasible": true,
+      "makespan": 711,
+      "gap_pct": 30.21978021978022
+    },
+    {
+      "instance_id": "gen-6x6-42-00417",
+      "feasible": true,
+      "makespan": 641,
+      "gap_pct": 10.137457044673539
+    },
+    {
+      "instance_id": "gen-6x6-42-00418",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00425",
+      "feasible": true,
+      "makespan": 557,
+      "gap_pct": 10.95617529880478
+    },
+    {
+      "instance_id": "gen-6x6-42-00433",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00443",
+      "feasible": true,
+      "makespan": 652,
+      "gap_pct": 26.601941747572816
+    },
+    {
+      "instance_id": "gen-6x6-42-00447",
+      "feasible": true,
+      "makespan": 713,
+      "gap_pct": 45.807770961145195
+    },
+    {
+      "instance_id": "gen-6x6-42-00471",
+      "feasible": true,
+      "makespan": 617,
+      "gap_pct": 11.978221415607985
+    },
+    {
+      "instance_id": "gen-6x6-42-00481",
+      "feasible": true,
+      "makespan": 791,
+      "gap_pct": 36.37931034482759
+    },
+    {
+      "instance_id": "gen-6x6-42-00503",
+      "feasible": true,
+      "makespan": 658,
+      "gap_pct": 36.7983367983368
+    },
+    {
+      "instance_id": "gen-6x6-42-00506",
+      "feasible": true,
+      "makespan": 601,
+      "gap_pct": 35.97285067873303
+    },
+    {
+      "instance_id": "gen-6x6-42-00512",
+      "feasible": true,
+      "makespan": 667,
+      "gap_pct": 41.91489361702128
+    },
+    {
+      "instance_id": "gen-6x6-42-00522",
+      "feasible": true,
+      "makespan": 600,
+      "gap_pct": 24.74012474012474
+    },
+    {
+      "instance_id": "gen-6x6-42-00528",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00530",
+      "feasible": true,
+      "makespan": 621,
+      "gap_pct": 30.736842105263158
+    },
+    {
+      "instance_id": "gen-6x6-42-00535",
+      "feasible": true,
+      "makespan": 583,
+      "gap_pct": 18.016194331983808
+    },
+    {
+      "instance_id": "gen-6x6-42-00554",
+      "feasible": true,
+      "makespan": 549,
+      "gap_pct": 20.13129102844639
+    },
+    {
+      "instance_id": "gen-6x6-42-00555",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00583",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00599",
+      "feasible": true,
+      "makespan": 782,
+      "gap_pct": 20.679012345679013
+    },
+    {
+      "instance_id": "gen-6x6-42-00607",
+      "feasible": true,
+      "makespan": 727,
+      "gap_pct": 41.9921875
+    },
+    {
+      "instance_id": "gen-6x6-42-00608",
+      "feasible": true,
+      "makespan": 756,
+      "gap_pct": 50.898203592814376
+    },
+    {
+      "instance_id": "gen-6x6-42-00609",
+      "feasible": true,
+      "makespan": 649,
+      "gap_pct": 40.780911062906725
+    },
+    {
+      "instance_id": "gen-6x6-42-00610",
+      "feasible": true,
+      "makespan": 662,
+      "gap_pct": 31.349206349206348
+    },
+    {
+      "instance_id": "gen-6x6-42-00615",
+      "feasible": true,
+      "makespan": 659,
+      "gap_pct": 39.61864406779661
+    },
+    {
+      "instance_id": "gen-6x6-42-00619",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00628",
+      "feasible": true,
+      "makespan": 809,
+      "gap_pct": 62.124248496993985
+    },
+    {
+      "instance_id": "gen-6x6-42-00633",
+      "feasible": true,
+      "makespan": 584,
+      "gap_pct": 18.45841784989858
+    },
+    {
+      "instance_id": "gen-6x6-42-00665",
+      "feasible": true,
+      "makespan": 779,
+      "gap_pct": 27.495908346972175
+    },
+    {
+      "instance_id": "gen-6x6-42-00691",
+      "feasible": true,
+      "makespan": 881,
+      "gap_pct": 61.65137614678899
+    }
+  ]
+}

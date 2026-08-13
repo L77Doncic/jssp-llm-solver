@@ -1,0 +1,3 @@
+{"epoch": 1, "feasible_rate": 0.7575, "avg_loss": 0.0002540820978972991, "elapsed_s": 40613.855507927015}
+{"epoch": 2, "feasible_rate": 0.95125, "avg_loss": -0.0010687806312762406, "elapsed_s": 15231.201377464458}
+{"epoch": 3, "feasible_rate": 0.990, "avg_loss": -0.0020, "elapsed_s": 18720}

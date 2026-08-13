@@ -1,0 +1,35 @@
+# SFT 截断修复验证配置：6x6 全量（max_length 2048 完整容纳），60 步快速验证
+# 目的：确认模型能输出完整 JSON 排程且通过约束校验（修复 max_length=1024 截断问题）
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  dtype: bf16
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_length: 2048          # 6x6 完整样本约 1611 tokens，2048 完整容纳
+  mask_prompt: true
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 4
+  gradient_accumulation_steps: 2
+  learning_rate: 2.0e-4
+  num_epochs: 1
+  max_steps: 60             # 快速验证
+  warmup_steps: 5
+  logging_steps: 10
+  eval_steps: 30
+  save_steps: 30
+  save_total_limit: 1
+  gradient_checkpointing: true
+  output_dir: /root/jssp/experiments/sft_verify
+
+seed: 42

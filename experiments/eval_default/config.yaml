@@ -1,0 +1,25 @@
+# 推理评估配置（阶段 5）— 评估 SFT/FOARL 模型输出的可行性、gap、时间
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  adapter: /root/jssp/experiments/sft_qwen7b/final   # LoRA adapter；None 表示用基座零样本
+  dtype: bf16
+
+data:
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  split: test                      # 评估用划分（test / val / train）
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+
+inference:
+  n_samples: 8                     # BoN 采样数（论文默认 N=8）
+  temperature: 0.5                # JSON 精确生成：0.7 易发散，0.5 兼顾多样性与稳定性
+  top_p: 0.7
+  max_new_tokens: 4096            # 下限；脚本按规模动态放大（68×n×m，见 evaluate_schedule.py）
+  max_prompt_tokens: 2048
+
+reference:
+  # gap 参考来源：cp_sat（现解限时） / dataset（监督数据的 makespan） / none
+  mode: dataset
+  cp_sat_time_limit: 30.0
+
+output_dir: /root/jssp/experiments/eval_default

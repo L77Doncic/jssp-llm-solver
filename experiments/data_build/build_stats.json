@@ -1,0 +1,23 @@
+{
+  "total_instances": 42000,
+  "optimal": 38333,
+  "optimal_rate": 0.9126904761904762,
+  "by_scale": {
+    "6x6": {
+      "total": 20000,
+      "optimal": 20000
+    },
+    "10x10": {
+      "total": 15000,
+      "optimal": 15000
+    },
+    "15x15": {
+      "total": 5000,
+      "optimal": 3306
+    },
+    "20x20": {
+      "total": 2000,
+      "optimal": 27
+    }
+  }
+}
