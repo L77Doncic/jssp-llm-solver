@@ -1,0 +1,36 @@
+# SFT 对照实验：6x6 + TAI 注入 SPT 提示（TAI 特征消融的「训练注入」组）
+# 与 sft_p1a.yaml 唯一差异：data.hint_spt=true（其余配置完全相同 → 干净对照）
+# 对比对象：sft_qwen7b/final（无 hint 训练）+ 评估口径一致（60 实例 BoN8）
+
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  dtype: bf16
+
+data:
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  max_length: 4096
+  mask_prompt: true
+  hint_spt: true              # ← 唯一差异：TAI 注入 SPT makespan 提示
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 4
+  gradient_accumulation_steps: 16
+  learning_rate: 2.0e-4
+  num_epochs: 2
+  warmup_steps: 60
+  logging_steps: 50
+  eval_steps: 500
+  save_steps: 1000
+  save_total_limit: 2
+  gradient_checkpointing: true
+  output_dir: /root/jssp/experiments/sft_qwen7b_hint
+
+seed: 42

@@ -30,13 +30,21 @@ def load_sft_records(dataset_path: str | Path, split_ids: list[str] | None = Non
     return records
 
 
-def make_text_pair(rec: dict) -> tuple[str, str]:
+def make_text_pair(rec: dict, hint_spt: bool = False) -> tuple[str, str]:
     """把一条监督记录转成 (prompt, answer) 文本对。
 
-    prompt = TAI 模板；answer = 排程 JSON。
+    prompt = TAI 模板（hint_spt=True 时注入 SPT 启发式提示，用于 TAI 特征消融对照）；
+    answer = 排程 JSON。
     """
     instance = Instance.from_dict(rec["instance"])
-    prompt = build_tai(instance)
+    hint = None
+    if hint_spt:
+        from problem.makespan import makespan_from_starts
+        from solver.heuristics import gt_schedule
+
+        spt_mk = makespan_from_starts(instance, gt_schedule(instance, rule="spt"))
+        hint = f"A fast SPT heuristic yields makespan {spt_mk}"
+    prompt = build_tai(instance, heuristic_hint=hint)
     answer = encode_schedule(instance, rec["solution"]["starts"])
     return prompt, answer
 

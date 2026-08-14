@@ -159,8 +159,12 @@ def main() -> int:
 
     precheck_lengths(records, max_length)
 
+    hint_spt = config["data"].get("hint_spt", False)
+    if hint_spt:
+        print("[data] hint_spt=True：TAI 注入 SPT 启发式提示（TAI 特征消融训练对照组）")
+
     def build_ds(recs):
-        pairs = [make_text_pair(r) for r in recs]
+        pairs = [make_text_pair(r, hint_spt=hint_spt) for r in recs]
         tokenized = [
             tokenize_pair(tokenizer, p, a, max_length=max_length, mask_prompt=mask_prompt)
             for p, a in pairs

@@ -1,0 +1,18 @@
+{
+  "10x10": {
+    "n": 60,
+    "feasible_rate": 0.35,
+    "avg_gap_pct": 50.767504540493505
+  },
+  "15x15": {
+    "n": 60,
+    "feasible_rate": 0.0,
+    "avg_gap_pct": null
+  },
+  "20x20": {
+    "n": 60,
+    "feasible_rate": 0.0,
+    "avg_gap_pct": null
+  },
+  "total_time_s": 49654.3540430069
+}
