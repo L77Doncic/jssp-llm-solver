@@ -136,11 +136,10 @@ cd /root/jssp && python -m pytest tests/ -q   # 期望 107 passed
 - **耗时**：4-6h（15×15 rollout ~9500 tokens/采样）
 - **评估**：scripts/evaluate_schedule.py（adapter 指向新权重，60 实例 15x15）
 
-### 2. TAI 训练注入对照实验（训练完成 2026-08-14，评估中）
+### 2. TAI 训练注入对照实验（✅ 完成 2026-08-14）
 - 训练完成：experiments/sft_qwen7b_hint（6×6 + SPT 提示，与 p1a 同配置，5h）
-- 评估运行中（60 实例 × BoN8，自动衔接，~1.5h）
-- 结果与「纯 TAI」对比 → 补入报告 §5.6（预期：训练注入可能有效，区别于推理注入的无增益）
-- hint 权重已打包上传 GitHub Release v1（weights_hint.tgz）
+- 评估完成（60 实例 × BoN8）：**重要负结果**——SPT 提示训练注入破坏可行性（78.3% → 8.3%，训练阶段分布偏移），但对可行实例质量有增益（gap 29.61% → 10.70%）；完整三组对照（训练注入×推理注入）见报告 §5.6
+- hint 权重已上传 GitHub Release v1（weights_hint.tgz）
 - 若需重跑：`python scripts/train_sft.py -c configs/sft/sft_p1a_hint.yaml --scale-filter 6x6`（~9h）
 
 ### 3. lr 对齐论文（1e-6）重训 FOARL
