@@ -1,0 +1,6 @@
+{
+  "n": 60,
+  "feasible_rate": 0.03333333333333333,
+  "avg_gap_pct": 14.793367028021358,
+  "same_batch_as_eval_hint_sft": true
+}

@@ -12,7 +12,9 @@
       "feasible_rate": 0.9833333333333333,
       "avg_gap_pct": 42.21141484197053,
       "best_gap_pct": 10.137457044673539,
-      "elapsed_s": 2729.5812458992004
+      "elapsed_s": 2729.5812458992004,
+      "discarded": true,
+      "discard_reason": "\u9996\u8f6e\u6570\u636e\u53d7 vLLM LoRA int_id \u51b2\u7a81\u6c61\u67d3\uff082026-08-14\uff09\uff0c\u771f\u5b9e\u7ed3\u679c\u89c1 eval_hint_sft/eval_hint_hint"
     }
   ]
 }
