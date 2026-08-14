@@ -25,18 +25,38 @@
 |---|---|---|---|
 | **代码+文档+配置** | git 仓库（GitHub: L77Doncic/jssp-llm-solver） | ~400KB | ✅ `git clone` 即可 |
 | 最终报告/PDF | experiments/summary/ | ~250KB | ✅ 在 GitHub |
-| **LoRA 模型权重** | experiments/{sft_qwen7b/final, foarl_qwen7b/epoch2, sft_qwen7b_hint(训练中)} | ~161MB/个 | ⚠️ **必须手动迁移**（scp/rsync），GitHub 不含权重 |
-| 42K 监督数据 | /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl | ~200MB | ⚠️ 可重建（见 0.4）或迁移 |
-| 123 公开基准 | /root/autodl-tmp/jssp_data/raw/ | ~1MB | ✅ 可重下载（见 0.4） |
+| **LoRA 模型权重** | experiments/{sft_qwen7b/final, foarl_qwen7b/epoch1-3} | 573MB（打包） | ✅ **GitHub Release v1 下载**（见下） |
+| 42K 监督数据 + 划分 + 123 基准 | /root/autodl-tmp/jssp_data/ | 13MB（打包） | ✅ **GitHub Release v1 下载** |
+| 42K 实例文件 | /root/autodl-tmp/jssp_data/instances/ | 4.9MB（打包） | ✅ Release v1（可选，可重建） |
 | 模型基座 Qwen2.5-7B | /root/autodl-tmp/jssp_data/models/ | 15GB | ✅ 可重下载（见 0.4） |
 | 实验产物（results.json 等） | experiments/*/results.json | 小 | ✅ 已在 GitHub（gitignore 白名单） |
 
-**迁移命令参考**（新服务器上执行）：
+**资产下载（GitHub Release v1，任何新环境一条命令恢复）**：
 ```bash
+# Release 页面: https://github.com/L77Doncic/jssp-llm-solver/releases/tag/v1
+RELEASE=https://github.com/L77Doncic/jssp-llm-solver/releases/download/v1
+
 git clone https://github.com/L77Doncic/jssp-llm-solver.git /root/jssp
-# 权重迁移（旧服务器打包 → 新服务器解包）
-# 旧服务器: tar czf /tmp/adapters.tgz experiments/sft_qwen7b experiments/foarl_qwen7b
-# 新服务器: tar xzf adapters.tgz -C /root/jssp/experiments/
+cd /root/jssp
+
+# 1) 权重（LoRA adapters）→ experiments/
+mkdir -p experiments && curl -L -o /tmp/weights.tgz $RELEASE/weights.tgz
+tar xzf /tmp/weights.tgz -C experiments/   # 得到 sft_qwen7b/final、foarl_qwen7b/epoch{1,2,3}
+
+# 2) 数据 → 数据盘
+mkdir -p /root/autodl-tmp/jssp_data && curl -L -o /tmp/data.tgz $RELEASE/data.tgz
+tar xzf /tmp/data.tgz -C /root/autodl-tmp/jssp_data/   # supervised/ + splits/ + raw/
+
+# 3) 实例（可选）→ 数据盘
+curl -L -o /tmp/instances.tgz $RELEASE/instances.tgz
+tar xzf /tmp/instances.tgz -C /root/autodl-tmp/jssp_data/
+
+# 4) 模型基座（15GB，国内走 hf-mirror）
+export HF_ENDPOINT=https://hf-mirror.com HF_HUB_DISABLE_XET=1
+python -c "from huggingface_hub import snapshot_download; snapshot_download('Qwen/Qwen2.5-7B-Instruct', local_dir='/root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct')"
+
+# 5) 验证
+python -m pytest tests/ -q   # 期望 107 passed
 ```
 
 ### 0.2 环境搭建（conda + 依赖）
@@ -87,14 +107,14 @@ python scripts/build_data.py -c configs/data/pipeline_full.yaml --out /root/auto
 # 产物 benchmark_manifest.json 格式见 data/raw/（可从旧服务器迁移此 1MB 目录最省事）
 ```
 
-### 0.5 模型权重重建（若未迁移，需 ~30 小时）
+### 0.5 模型权重重建（仅当 Release 下载不可用时，需 ~30 小时）
 
 | 权重 | 重建命令 | 耗时 |
 |---|---|---|
 | SFT（sft_qwen7b/final） | `bash scripts/run_sft_all.sh` | ~29h（四阶段） |
 | FOARL（foarl_qwen7b/epoch2） | `python scripts/train_foarl.py -c configs/foarl/foarl.yaml --start-epoch 2`（起点=SFT） | ~10h |
 
-**强烈建议直接迁移权重文件**（161MB × 几个，比重建省 30+ 小时）。
+**优先从 GitHub Release v1 下载**（§0.1 命令），重建是兜底方案。
 
 ### 0.6 测试验证
 
