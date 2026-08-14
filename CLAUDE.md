@@ -2,14 +2,150 @@
 
 本文件是本项目的「宪法」：每次开始工作前先读本文件；开发过程中若结构约定或经验发生变化，**必须同步更新本文件**。
 
+> **⚠️ 项目已迁移/或即将迁移到新服务器（2026-08-14）**：若本文件出现在新环境，先读「§0 新环境上手指南」——它包含环境重建、资产迁移与待办实验的完整说明。
+
 ## 项目概述
 
 **目标**：构建一个面向**静态作业车间调度问题（JSSP）**的大语言模型端到端求解器 —— 模型以生产实例信息为输入，直接输出满足约束的可行排程，在 makespan 上取得较优性能并具备泛化能力。
 
+**状态**：✅ **全部交付完成**（2026-08-13 独立验收通过）。当前处于「改进迭代」阶段，待办见「§改进路线图」。
+
 **来源**：笔试任务书（`Vibe Coding 笔试.docx` 为原始需求文档，勿删）。
 **核心参考**：LLMCoSolver（Jiang et al., NeurIPS 2025, arXiv:2509.16865；代码: github.com/Summer142857/LLMCoSolver）—— 本项目直接借鉴其 **SFT + FOARL 两阶段训练**范式。
 
-## 运行环境（本地部署，无任何 API）
+---
+
+## §0 新环境上手指南（迁移必读）
+
+新服务器拿到项目后，按此顺序 30 分钟内可恢复完整工作环境。
+
+### 0.1 资产清单（什么必须迁移，什么可重建）
+
+| 资产 | 位置（旧服务器） | 大小 | 迁移策略 |
+|---|---|---|---|
+| **代码+文档+配置** | git 仓库（GitHub: L77Doncic/jssp-llm-solver） | ~400KB | ✅ `git clone` 即可 |
+| 最终报告/PDF | experiments/summary/ | ~250KB | ✅ 在 GitHub |
+| **LoRA 模型权重** | experiments/{sft_qwen7b/final, foarl_qwen7b/epoch2, sft_qwen7b_hint(训练中)} | ~161MB/个 | ⚠️ **必须手动迁移**（scp/rsync），GitHub 不含权重 |
+| 42K 监督数据 | /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl | ~200MB | ⚠️ 可重建（见 0.4）或迁移 |
+| 123 公开基准 | /root/autodl-tmp/jssp_data/raw/ | ~1MB | ✅ 可重下载（见 0.4） |
+| 模型基座 Qwen2.5-7B | /root/autodl-tmp/jssp_data/models/ | 15GB | ✅ 可重下载（见 0.4） |
+| 实验产物（results.json 等） | experiments/*/results.json | 小 | ✅ 已在 GitHub（gitignore 白名单） |
+
+**迁移命令参考**（新服务器上执行）：
+```bash
+git clone https://github.com/L77Doncic/jssp-llm-solver.git /root/jssp
+# 权重迁移（旧服务器打包 → 新服务器解包）
+# 旧服务器: tar czf /tmp/adapters.tgz experiments/sft_qwen7b experiments/foarl_qwen7b
+# 新服务器: tar xzf adapters.tgz -C /root/jssp/experiments/
+```
+
+### 0.2 环境搭建（conda + 依赖）
+
+```bash
+# 1. conda 环境（Python 3.12）
+conda create -n jssp python=3.12 -y && conda activate jssp
+
+# 2. 核心依赖（torch 装 GPU 版，见第 3 步）
+pip install ortools pyyaml pytest numpy \
+            transformers peft datasets accelerate bitsandbytes
+
+# 3. PyTorch + CUDA（按新机 CUDA 驱动版本选；5090/Blackwell 需 CUDA >= 12.9）
+#    若驱动 13.x: pip install torch torchaudio torchvision --index-url https://download.pytorch.org/whl/cu130
+#    版本纪律：torch 与 torchaudio 必须同版本配对（踩坑 6）
+pip install "torch==2.11.0+cu130" "torchaudio==2.11.0+cu130" --index-url https://download.pytorch.org/whl/cu130
+
+# 4. vLLM（可选，评估/FOARL 加速；需 flashinfer）
+pip install vllm flashinfer-python ninja
+
+# 5. 验证
+python -c "import torch, transformers, peft, ortools; print(torch.__version__, torch.cuda.is_available())"
+```
+
+### 0.3 vLLM 环境变量（Blackwell/5090 必配，踩坑 16）
+
+```bash
+export PATH=/root/miniconda3/bin:$PATH
+export CUDA_HOME=/root/miniconda3/lib/python3.12/site-packages/nvidia/cu13
+export LD_LIBRARY_PATH=$CUDA_HOME/lib:$LD_LIBRARY_PATH
+export VLLM_ATTENTION_BACKEND=FLASH_ATTN
+export VLLM_USE_FLASHINFER_SAMPLER=0
+# 使用 vllm 前必 export；建议写 ~/.bashrc
+```
+
+### 0.4 数据与模型重建（若未迁移）
+
+```bash
+# 模型基座（hf-mirror 国内镜像，必须禁用 xet，踩坑 9）
+export HF_ENDPOINT=https://hf-mirror.com HF_HUB_DISABLE_XET=1
+python -c "from huggingface_hub import snapshot_download; snapshot_download('Qwen/Qwen2.5-7B-Instruct', local_dir='/root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct')"
+
+# 42K 监督数据重建（CP-SAT 求解，约 47 小时，建议后台跑）
+python scripts/build_data.py -c configs/data/pipeline_full.yaml --out /root/autodl-tmp/jssp_data
+
+# 123 公开基准（ft/la/ta）
+# 来源：GitHub tamy0612/JSPLIB 的 instances/ 目录；已知最优: thomasWeise/jsspInstancesAndResults
+# 产物 benchmark_manifest.json 格式见 data/raw/（可从旧服务器迁移此 1MB 目录最省事）
+```
+
+### 0.5 模型权重重建（若未迁移，需 ~30 小时）
+
+| 权重 | 重建命令 | 耗时 |
+|---|---|---|
+| SFT（sft_qwen7b/final） | `bash scripts/run_sft_all.sh` | ~29h（四阶段） |
+| FOARL（foarl_qwen7b/epoch2） | `python scripts/train_foarl.py -c configs/foarl/foarl.yaml --start-epoch 2`（起点=SFT） | ~10h |
+
+**强烈建议直接迁移权重文件**（161MB × 几个，比重建省 30+ 小时）。
+
+### 0.6 测试验证
+
+```bash
+cd /root/jssp && python -m pytest tests/ -q   # 期望 107 passed
+```
+
+---
+
+## 改进路线图（当前阶段：交付完成后的迭代）
+
+> 按优先级排序。每个实验的结果记入 experiments/<exp>/summary.md 并更新本文件。
+
+### 1. FOARL 快速验证实验（15×15 可行率修复验证，优先级最高）
+- **动机**：报告 §6.2 归因②（FOARL 规模错配导致 15×15 可行率 0%）；论文（Table 2 large 档 16.25% gap/100% 可行）证明 FOARL 覆盖规模即可修复
+- **设计**：100 个 15×15 实例 × 1 epoch FOARL（数据：从 supervised 数据集抽 15x15，参考 = CP-SAT 解）
+  - 配置参考：configs/foarl/foarl.yaml，改 `scales: [15x15]`、`max_instances: 100`、epochs=1，输出目录 experiments/foarl_15x15_quick
+- **预期**：15×15 可行率 0% → 显著回升（若成立则验证归因②；不成立则归因需修正）
+- **耗时**：4-6h（15×15 rollout ~9500 tokens/采样）
+- **评估**：scripts/evaluate_schedule.py（adapter 指向新权重，60 实例 15x15）
+
+### 2. TAI 训练注入对照实验（进行中/需收尾）
+- 训练中：experiments/sft_qwen7b_hint（6×6 + SPT 提示，与 p1a 同配置）
+- 完成后评估（脚本已自动衔接），结果与「纯 TAI」对比 → 补入报告 §5.6
+- 若需重跑：`python scripts/train_sft.py -c configs/sft/sft_p1a_hint.yaml --scale-filter 6x6`（~9h）
+
+### 3. lr 对齐论文（1e-6）重训 FOARL
+- 动机：epoch3 漂移归因于 lr=5e-5 过高（论文 1e-6）
+- 设计：configs/foarl/foarl.yaml 改 learning_rate: 1e-6，重跑 3 epochs，对比漂移是否消失
+
+### 4. 多规模 FOARL（若时间充足）
+- FOARL 数据覆盖 6×6~20×20（论文口径），预期修复全部规模的约束违规
+- 成本高（40-60h），先看实验 1 结果再决定
+
+### 5. 输出结构化约束（受限解码）
+- 机制性修复错误指数累积（报告 §6.2 归因①）：用语法约束采样保证 JSON 结构正确
+- 参考：outlines / guidance / vLLM guided decoding
+
+---
+
+## 论文 JSSP 结果对照（改进目标参照）
+
+| 规模档（100 实例/档） | 论文 gap | 论文可行率 | 我们（同口径待测） |
+|---|---|---|---|
+| small 5×5–10×10 | 2.86% | 100% | 6×6 97% 可行 / gap 43%（BoN8） |
+| medium 10×10–15×15 | 9.56% | 100% | 10×10 35% 可行 |
+| large 15×15–20×20 | 16.25% | 100% | 15×15/20×20 0% 可行 |
+
+论文要点：SFT 数据 500K/问题、规模 U[5,20] 随机（**训练覆盖大规格**）、FOARL ≤3200 实例/问题、context 20000 tokens、监督 CP-SAT 300s 时限。Taillard 泛化（N=8）：15×15 14.22% / 20×15 21.16% / 20×20 23.30%。
+
+## 运行环境（本地部署，无任何 API）（原服务器参考；新环境按 §0.2 重建）
 
 | 项 | 值 |
 |---|---|
@@ -24,7 +160,7 @@
 
 **模型选型决策（2026-08-06）**：主模型 **Qwen2.5-7B-Instruct**（LLMCoSolver 论文同款配置，JSSP 上已验证 100% 可行率、gap 1.03%–8.20%；32GB 卡上 LoRA 训练舒适）；升级备选 Qwen2.5-14B（QLoRA）；对照备选 Llama-3.1-8B（Starjob 验证模型）。
 
-## 当前阶段（重要，2026-08-09 更新）
+## 当前阶段（2026-08-14 更新：交付完成，进入改进迭代；历史过程记录保留如下）
 
 - **阶段 0/1/2** ✅ 完成（结构、42K 数据集、TAI+JSON 表示，107 测试全绿）
 - **阶段 3：SFT —— 发现并修复训练配置错误（进行中）**
@@ -55,10 +191,6 @@
 - 后续阶段（自动推进中）：评估 → 泛化 → 基线 → 消融 → 报告
 
 ### 交付清单（对照任务书，全部必须完成，严禁降级 —— 2026-08-09 用户明确要求）
-
-**✅ 全部 12 项已完成（2026-08-13 独立验收通过，可交付）**；验收发现的补强项进行中：
-- 🔄 分布内多规模评估（10x10/15x15/20x20，`eval_multiscale`）
-- ⬜ TAI 特征消融（关注点⑤补强）
 
 **✅ 已完成**
 1. 标准化输入表示与输出解析方案（TAI + JSON + 容错解析 + validator）
