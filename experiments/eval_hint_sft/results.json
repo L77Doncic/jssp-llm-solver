@@ -1,0 +1,376 @@
+{
+  "stats": {
+    "n": 60,
+    "feasible_rate": 0.08333333333333333,
+    "avg_gap_pct": 17.293409289719147,
+    "best_gap_pct": 7.603686635944701,
+    "avg_makespan": 524.6,
+    "min_makespan": 441,
+    "max_makespan": 680,
+    "avg_gen_time_per_sample_s": 8.424111053611462,
+    "n_samples_bon": 8,
+    "total_wall_time_s": 4044.321263678372
+  },
+  "per_instance": [
+    {
+      "instance_id": "gen-6x6-42-00026",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00037",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00044",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00071",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00075",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00083",
+      "feasible": true,
+      "makespan": 680,
+      "gap_pct": 29.277566539923956
+    },
+    {
+      "instance_id": "gen-6x6-42-00095",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00102",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00110",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00117",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00141",
+      "feasible": true,
+      "makespan": 441,
+      "gap_pct": 7.823960880195599
+    },
+    {
+      "instance_id": "gen-6x6-42-00162",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00168",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00175",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00179",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00185",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00197",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00212",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00227",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00232",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00250",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00270",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00291",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00305",
+      "feasible": true,
+      "makespan": 509,
+      "gap_pct": 29.846938775510207
+    },
+    {
+      "instance_id": "gen-6x6-42-00308",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00339",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00340",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00344",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00363",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00386",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00400",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00417",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00418",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00425",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00433",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00443",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00447",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00471",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00481",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00503",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00506",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00512",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00522",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00528",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00530",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00535",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00554",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00555",
+      "feasible": true,
+      "makespan": 467,
+      "gap_pct": 7.603686635944701
+    },
+    {
+      "instance_id": "gen-6x6-42-00583",
+      "feasible": true,
+      "makespan": 526,
+      "gap_pct": 11.914893617021278
+    },
+    {
+      "instance_id": "gen-6x6-42-00599",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00607",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00608",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00609",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00610",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00615",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00619",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00628",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00633",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00665",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    },
+    {
+      "instance_id": "gen-6x6-42-00691",
+      "feasible": false,
+      "makespan": null,
+      "gap_pct": null
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+model:
+  base_model: /root/autodl-tmp/jssp_data/models/Qwen2.5-7B-Instruct
+  adapter: /root/jssp/experiments/sft_qwen7b_hint/final
+  dtype: bf16
+data:
+  splits_dir: /root/autodl-tmp/jssp_data/splits
+  split: test
+  dataset_path: /root/autodl-tmp/jssp_data/supervised/sft_dataset.jsonl
+inference:
+  n_samples: 8
+  temperature: 0.5
+  top_p: 0.7
+  max_new_tokens: 4096
+output_dir: /root/jssp/experiments/eval_hint_sft
