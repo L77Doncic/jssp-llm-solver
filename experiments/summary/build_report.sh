@@ -15,6 +15,12 @@ cd "$(dirname "$0")"
 MD=technical_report.md
 TITLE="$(head -1 "$MD" | sed 's/^# //')"
 
+# 封面标题手工断行（P3-7）：在"（JSSP）"前拆成两段，
+# 模板中以 \\ 断行渲染（pandoc 会转义 metadata 里的反斜杠，故不能直接传 \\）
+TITLE1="$(printf '%s' "$TITLE" | sed 's/（JSSP）.*//')"
+TITLE2="$(printf '%s' "$TITLE" | sed 's/.*（JSSP）/（JSSP）/')"
+[ "$TITLE1" = "$TITLE" ] && TITLE2=""   # 无（JSSP）标记则退化为单行
+
 # 1) 剥离首行 H1（标题由 --metadata title 传入封面）
 tail -n +2 "$MD" > technical_report.body.md
 
@@ -24,6 +30,8 @@ pandoc technical_report.body.md -f markdown+smart \
   --template=report_template.tex \
   --toc --toc-depth=2 --number-sections \
   --metadata title="$TITLE" \
+  --metadata covertitle1="$TITLE1" \
+  --metadata covertitle2="$TITLE2" \
   --metadata subtitle="数据构建 → SFT → FOARL → 自动评估：全流程实现、问题归因与实验分析" \
   --metadata date="2026年8月15日" \
   --metadata model="Qwen2.5-7B-Instruct（LoRA 微调）" \

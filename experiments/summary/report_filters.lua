@@ -28,13 +28,67 @@ local function tex_escape(s)
   return (s:gsub('.', function(c) return latex_escapes[c] or c end))
 end
 
+-- ----------------------------------------------------------------
+-- 引号方向修复（P1-3）：pandoc smart 在中文语境下把 "…" 两侧都判为
+-- 右引号 U+201D（如 `模型"多输出"` → 模型”多输出”）。这里按块内
+-- 成对出现的 “/”/"（U+201C / U+201D / ASCII "）顺序转换为中文
+-- 书名式引号 「…」，状态按块（段落/表格/标题）重置，避免跨块串对。
+-- ----------------------------------------------------------------
+local quote_open = false
+
+-- 按 UTF-8 字节序列匹配（s:sub(i,i) 只取 1 字节，不能与 3 字节字面量比较）
+local function match_utf8(s, i, bytes)
+  local n = #bytes
+  for j = 1, n do
+    if s:byte(i + j - 1) ~= bytes[j] then return false end
+  end
+  return true
+end
+
+local LQUOTE = { 226, 128, 156 }   -- “
+local RQUOTE = { 226, 128, 157 }   -- ”
+local CN_LQ = '\227\128\140'       -- 「 U+300C
+local CN_RQ = '\227\128\141'       -- 」 U+300D（注意是 8D，不是 91＝】）
+
+local function fix_quotes(s)
+  local out = {}
+  local i = 1
+  while i <= #s do
+    local b = s:byte(i)
+    if b == 34 then               -- ASCII "
+      if quote_open then
+        out[#out + 1] = CN_RQ; quote_open = false
+      else
+        out[#out + 1] = CN_LQ; quote_open = true
+      end
+      i = i + 1
+    elseif match_utf8(s, i, LQUOTE) or match_utf8(s, i, RQUOTE) then
+      if quote_open then
+        out[#out + 1] = CN_RQ; quote_open = false
+      else
+        out[#out + 1] = CN_LQ; quote_open = true
+      end
+      i = i + 3
+    else
+      out[#out + 1] = s:sub(i, i)
+      i = i + 1
+    end
+  end
+  return table.concat(out)
+end
+
+-- 块级重置（正文 Str 在全局 Str 过滤器里做转换）
+local function reset_quote_state()
+  quote_open = false
+end
+
 -- 行内元素 → LaTeX 字符串
 local function inlines(blocks)
   local parts = {}
   local function walk(blks)
     for _, b in ipairs(blks) do
       if b.t == 'Str' then
-        parts[#parts + 1] = tex_escape(b.text)
+        parts[#parts + 1] = tex_escape(fix_quotes(b.text))
       elseif b.t == 'Space' or b.t == 'SoftBreak' then
         parts[#parts + 1] = ' '
       elseif b.t == 'LineBreak' then
@@ -73,7 +127,16 @@ local function cell_latex(cell)
       parts[#parts + 1] = tex_escape(pandoc.utils.stringify(blk))
     end
   end
-  return table.concat(parts, '\\par ')
+  -- "/" 后加断点：长 token（如 6×6/10×10、train/val/test）在窄列中
+  -- 可从 "/" 后断行，避免整段不可断造成 Overfull。
+  -- 注意（本机 XeTeX 实测的坑）：
+  --   ① 不用 \allowbreak——鲁棒命令后紧跟 UTF-8 CJK 字节报 Undefined cs；
+  --   ② 不用裸 \penalty0——后跟数字会被并入数值（\penalty010 吃掉 "10"）；
+  --   ③ 不用 \z@——正文中 @ 是 other catcode，\z@ 被拆成 \z + @；
+  --   ④ 控制字后紧跟 CJK 字节同样报 Undefined cs，故 \relax 后必须留空格
+  --      （控制字后的空格会被吞掉，不产生可见间隙）。
+  -- 用 \penalty0\relax （尾随空格）：\relax 终止数字扫描且吞掉空格。
+  return (table.concat(parts, '\\par ')):gsub('/', '/\\penalty0\\relax ')
 end
 
 -- ---------------- 1-4. 标题处理 ----------------
@@ -139,8 +202,25 @@ function OrderedList(el)
   return nil
 end
 
+-- ---------------- 引号修复：正文 Str 全局转换 ----------------
+-- 块级入口重置配对状态（块内成对转换；"每段落独立配对"避免跨块串对）
+function Para(el)
+  reset_quote_state()
+  return nil
+end
+function Plain(el)
+  reset_quote_state()
+  return nil
+end
+function Str(el)
+  el.text = fix_quotes(el.text)
+  return el
+end
+
 -- ---------------- 5. 表格 ----------------
 function Table(tbl)
+  -- 表格单元格引号独立配对
+  reset_quote_state()
   -- pandoc 3.1.3 AST：head.rows[1].cells = 表头；body.body = 数据行
   local header_cells = {}
   if tbl.head and tbl.head.rows and #tbl.head.rows > 0 then
@@ -162,12 +242,23 @@ function Table(tbl)
     end
   end
 
-  -- 自适应列宽：按各列最长内容长度分配 \hsize
+  -- 自适应列宽：按各列最长内容"排版宽度"分配 \hsize。
+  -- CJK 字符（全角）计 2 个单位，ASCII 计 1 个单位——比字符数更接近
+  -- 真实列宽比例，缓解 §2.4 这类长中文列被低估导致的 Overfull。
+  -- 注意：必须按 UTF-8 码点遍历（Lua 的 "." 匹配字节，3 字节 CJK
+  -- 会被数成 3 个"字符"）。
+  local function text_units(s)
+    local units = 0
+    for _, cp in utf8.codes(s) do
+      if cp > 127 then units = units + 2 else units = units + 1 end
+    end
+    return units
+  end
   local weights = {}
   for i = 1, ncols do weights[i] = 4 end
   local function consider(cells)
     for i, c in ipairs(cells) do
-      local w = #cell_text(c)
+      local w = text_units(cell_text(c))
       if w > weights[i] then weights[i] = w end
     end
   end
@@ -177,26 +268,33 @@ function Table(tbl)
   for i = 1, ncols do total = total + weights[i] end
   local hsizes = {}
   for i = 1, ncols do
-    hsizes[i] = math.max(0.55, weights[i] / total * ncols)
+    hsizes[i] = math.max(0.5, weights[i] / total * ncols)
   end
   local hsum = 0
   for i = 1, ncols do hsum = hsum + hsizes[i] end
   for i = 1, ncols do hsizes[i] = hsizes[i] / hsum * ncols end
 
+  -- 列宽：p{}-列精确宽度（不用 tabularx——其测量遍会打印伪警告
+  -- "Underfull badness 10000 in alignment"，且 X 列宽度不可精确控制）。
+  -- W_i = hsize_i/ncols·\linewidth − f·\tabcolsep，f = 2(n−1)/n，
+  -- 使整表宽度恰为 \linewidth（@{} 去掉两端 colsep，列间各 2\tabcolsep）。
+  -- 单元格用 \RaggedRight（ragged2e，右留白 1fil 伸缩）避免断行 underfull。
+  local tcf = 2 * (ncols - 1) / ncols
   local cols = {}
   for i = 1, ncols do
     local spec = tbl.colspecs and tbl.colspecs[i]
     local align = spec and (spec[1] or spec.alignment) or 'AlignDefault'
     local ralign
     if align == 'AlignRight' then
-      ralign = 'raggedleft'
+      ralign = 'RaggedLeft'
     elseif align == 'AlignCenter' then
       ralign = 'centering'
     else
-      ralign = 'raggedright'
+      ralign = 'RaggedRight'
     end
     cols[i] = string.format(
-      '>{\\hsize=%0.3f\\hsize\\%s\\arraybackslash}X', hsizes[i], ralign)
+      '>{\\%s\\arraybackslash}p{\\dimexpr%0.4f\\linewidth/%d-%0.3f\\tabcolsep\\relax}',
+      ralign, hsizes[i], ncols, tcf)
   end
 
   local rows_tex = {}
@@ -216,8 +314,8 @@ function Table(tbl)
 
   local tex = '\\begin{table}[H]\n\\centering\n'
     .. '\\renewcommand{\\arraystretch}{1.3}\n'
-    .. '\\begin{tabularx}{\\linewidth}{@{}' .. table.concat(cols, ' ') .. '@{}}\n'
-    .. table.concat(rows_tex, '\n') .. '\n\\end{tabularx}\n\\end{table}'
+    .. '\\begin{tabular}{@{}' .. table.concat(cols, ' ') .. '@{}}\n'
+    .. table.concat(rows_tex, '\n') .. '\n\\end{tabular}\n\\end{table}'
   return pandoc.RawBlock('latex', tex)
 end
 

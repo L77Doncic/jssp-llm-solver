@@ -41,3 +41,7 @@ checkpoints/
 # 密钥与凭据（SSH 密码等严禁入库）
 .env
 *.key
+
+# 拆分的 CJK 字体二进制（fonts/split_cjk_fonts.py 可重建，不入库）
+experiments/summary/fonts/*.otf
+experiments/summary/fonts/*.ttf

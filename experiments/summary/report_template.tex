@@ -26,24 +26,40 @@
 \usepackage{setspace}
 
 % ---------- 字体（Noto 思源系列） ----------
+% 注意：fontspec 2.8a（TeX Live 2022/2023）无法选择 TTC 内 face index，
+% 按字体名加载 Noto CJK 恒取 face 0（JP 面）。因此本模板一律加载
+% fonts/ 下按 SC 面拆分出的单面 OTF（由 fonts/split_cjk_fonts.py 生成，
+% 拆分后 CFF FontName 亦改为 *sc*，保证 pdffonts 显示 Noto*CJKsc）。
 \usepackage{fontspec}
 \usepackage{xeCJK}
-\setmainfont{Noto Serif CJK SC}[
-  BoldFont={Noto Serif CJK SC Bold},
-  ItalicFont={AR PL KaitiM GB},       % 中文惯例：楷体作斜体强调
-  SlantedFont={AR PL KaitiM GB},
+\setmainfont{NotoSerifCJKsc-Regular.otf}[
+  Path=fonts/,
+  BoldFont=NotoSerifCJKsc-Bold.otf,
+  ItalicFont={ARPLKaitiMGB.ttf},      % 中文惯例：楷体作斜体强调（已拷入 fonts/）
+  SlantedFont={ARPLKaitiMGB.ttf},
 ]
-\setCJKmainfont{Noto Serif CJK SC}[
-  BoldFont={Noto Serif CJK SC Bold},
-  ItalicFont={AR PL KaitiM GB},
+\setCJKmainfont{NotoSerifCJKsc-Regular.otf}[
+  Path=fonts/,
+  BoldFont=NotoSerifCJKsc-Bold.otf,
+  ItalicFont={ARPLKaitiMGB.ttf},
 ]
-\setsansfont{Noto Sans CJK SC}[BoldFont={Noto Sans CJK SC Bold}]
-\setCJKsansfont{Noto Sans CJK SC}[BoldFont={Noto Sans CJK SC Bold}]
-\setmonofont{Noto Sans Mono CJK SC}[
-  BoldFont={Noto Sans Mono CJK SC Bold},
+\setsansfont{NotoSansCJKsc-Regular.otf}[
+  Path=fonts/,
+  BoldFont=NotoSansCJKsc-Bold.otf,
+]
+\setCJKsansfont{NotoSansCJKsc-Regular.otf}[
+  Path=fonts/,
+  BoldFont=NotoSansCJKsc-Bold.otf,
+]
+\setmonofont{NotoSansMonoCJKsc-Regular.otf}[
+  Path=fonts/,
+  BoldFont=NotoSansMonoCJKsc-Bold.otf,
   Scale=0.95,
 ]
-\setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont={Noto Sans Mono CJK SC Bold}]
+\setCJKmonofont{NotoSansMonoCJKsc-Regular.otf}[
+  Path=fonts/,
+  BoldFont=NotoSansMonoCJKsc-Bold.otf,
+]
 
 % ---------- 间距节奏（Butterick：行距约 150%；两端对齐为默认） ----------
 \setstretch{$if(linestretch)$$linestretch$$else$1.35$endif$}
@@ -84,6 +100,8 @@
 \usepackage{array}
 \usepackage{longtable}   % 兜底（过滤器未覆盖的表格）
 \usepackage{float}
+\usepackage{ragged2e}    % \RaggedRight：X 列单元格右留白用 1fil 伸缩，
+                         % 消除 tabularx 单元格的 Underfull badness 10000
 \setlength{\intextsep}{7pt plus 2pt minus 2pt}
 
 % ---------- 代码块（fvextra 兜底样式；正式样式由 codebox 提供） ----------
@@ -147,7 +165,8 @@ $if(title)$
 \vspace*{2.2cm}
 {\small\sffamily\color{metagray} JSSP · 技术报告}\\[2.6em]
 {\color{dblue}\rule{0.42\linewidth}{1.6pt}}\\[2.2em]
-{\fontsize{26}{38}\selectfont\bfseries\sffamily\color{dblue} $title$}\\[2.2em]
+{\fontsize{26}{38}\selectfont\bfseries\sffamily\color{dblue}
+$if(covertitle2)$$covertitle1$\\[0.15em]$covertitle2$$else$$title$$endif$}\\[2.2em]
 {\color{dblue}\rule{0.42\linewidth}{1.6pt}}\\[2.0em]
 $if(subtitle)$
 {\large\sffamily\color{black!70} $subtitle$}\\[3.4em]

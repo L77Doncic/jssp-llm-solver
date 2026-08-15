@@ -154,6 +154,14 @@ cd /root/jssp && python -m pytest tests/ -q   # 期望 107 passed
 - 机制性修复错误指数累积（报告 §6.2 归因①）：用语法约束采样保证 JSON 结构正确
 - 参考：outlines / guidance / vLLM guided decoding
 
+### 6. 技术报告 PDF 排版评审修复（✅ 完成 2026-08-15，第 1 轮评审 8 项）
+- **字体（P0-1/P2-6）**：本机 TeX Live（fontspec 2.8a）无法选择 TTC face index，按名加载 Noto CJK 恒取 face 0（JP 面）→ pdffonts 全为 `*CJKjp*`；且该 TTC 各面共享 CFF（FontName 恒为 *jp*）。修复：`experiments/summary/fonts/split_cjk_fonts.py` 按 face index 拆分 SC 面（含 Mono）为单面 OTF 并改写 CFF FontName 为 *sc*；模板 `\setCJKmainfont` 等全部改 `Path=fonts/` 显式加载。重建后 pdffonts 全为 `Noto*CJKsc`（含 NotoSansMonoCJKsc——此前等宽声明加载的是 TTC face 0 的**非等宽** Sans 面，代码块实际不是等宽）
+- **引号方向（P1-3）**：pandoc smart 在中文语境把 `"…"` 两侧都判为右引号 → `”…”`。修复：report_filters.lua 按块状态机把成对 “/”/" 转「…」（注意 Lua 匹配 UTF-8 必须按字节序列，且 `」` 是 E3 80 8D 不是 91）
+- **表格（P2-4/P2-5）**：tabularx 测量遍会产生伪 Underfull badness 10000，且 X 列宽不可控。修复：Lua 过滤器改为 `p{\dimexpr…}` 精确列宽（CJK 按码点×2 计宽，整表恰为 \linewidth）；"6×6/10×10" 类长 token 在 "/" 后加 `\penalty0\relax `（坑：`\allowbreak`/裸 `\penalty0`/`\z@`/控制字后紧跟 CJK 字节均会出错，实测见过滤器注释）。重建后 Overfull/Underfull 全 0
+- **封面断行（P3-7）**：build_report.sh 把标题在「（JSSP）」前拆两段，模板 `$covertitle1$\\[0.15em]$covertitle2$` 渲染（pandoc 会转义 metadata 中的反斜杠，不能直接传 `\\`）
+- **禁则（P0-2）核实为误报**：pdftotext -layout 因 CJK 标点压缩（字形左缘与前字重叠）把同一行拆成伪行，扫描出"18 处行首标点"；按 bbox 坐标逐字核验，PDF 实际无任何行以 `，。：；` 开头。修复后 0 处（-layout 方法仍会报 18，属提取伪影）
+- 字体二进制（~121MB）不入库（.gitignore 排除，split_cjk_fonts.py 可重建，需 `git add -f` 强制加入脚本本身）
+
 ---
 
 ## 论文 JSSP 结果对照（改进目标参照）
