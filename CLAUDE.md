@@ -335,6 +335,9 @@ jssp/                          # /root/jssp，代码与文档
 - pip 镜像：阿里云（`/etc/pip.conf` 已配置）；HuggingFace 下载模型走 `hf-mirror.com`（`export HF_ENDPOINT=https://hf-mirror.com`）
 - 后台长任务：`nohup ... > log 2>&1 &`，日志统一放 `experiments/<exp>/logs/`
 - GPU 检查：`nvidia-smi`；单卡 5090 32GB
+- 技术报告 PDF 重建（2026-08-15 排版美化后）：`cd experiments/summary && bash build_report.sh`
+  - 排版由 `report_template.tex`（pandoc 模板）+ `report_filters.lua`（Lua 过滤器）控制：封面/深蓝标题/黑体标题宋体正文/三线表蓝表头/代码灰底框/摘要框/页眉页脚
+  - 正文内容零修改（md 为唯一事实源）；手写目录由 `--toc` 自动目录替代；需 xelatex + Noto 思源字体（§0.2）
 
 ## 维护规则（本文件自身）
 

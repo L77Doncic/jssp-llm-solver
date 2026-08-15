@@ -1,0 +1,187 @@
+% =====================================================================
+% report_template.tex — JSSP 技术报告 pandoc 模板（xelatex 编译）
+%
+% 设计要点（2026-08-15 排版调研结论的落实）：
+%   1. 封面页：居中大标题 + 副标题 + 元信息（日期/模型/算力）
+%   2. 标题层级：章节号 + 深蓝配色；中文惯例「标题黑体、正文宋体」
+%   3. 正文字体 Noto Serif CJK SC（思源宋体），等宽 Noto Sans Mono CJK SC
+%   4. 表格 booktabs 三线表 + 深蓝表头（表格 LaTeX 由 report_filters.lua 生成）
+%   5. 代码块浅灰底 + 边框（tcolorbox + fancyvrb，由过滤器注入）
+%   6. 页眉当前章节名 / 页脚居中页码（fancyhdr）
+%   7. 摘要 tcolorbox 强调框（由过滤器包裹）
+%   8. 目录带点线引导与页码（pandoc --toc）
+%   9. 两端对齐（LaTeX 默认）+ parskip 段间距 + 1.35 行距
+%
+% 用法：pandoc technical_report.md --template=report_template.tex \
+%         --lua-filter=report_filters.lua --toc --number-sections ...
+% =====================================================================
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[11pt,a4paper]{article}
+
+% ---------- 页面 ----------
+\usepackage[a4paper, margin=2.2cm, top=2.6cm, bottom=2.6cm,
+  headheight=15pt, footskip=0.9cm]{geometry}
+\usepackage{setspace}
+
+% ---------- 字体（Noto 思源系列） ----------
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Noto Serif CJK SC}[
+  BoldFont={Noto Serif CJK SC Bold},
+  ItalicFont={AR PL KaitiM GB},       % 中文惯例：楷体作斜体强调
+  SlantedFont={AR PL KaitiM GB},
+]
+\setCJKmainfont{Noto Serif CJK SC}[
+  BoldFont={Noto Serif CJK SC Bold},
+  ItalicFont={AR PL KaitiM GB},
+]
+\setsansfont{Noto Sans CJK SC}[BoldFont={Noto Sans CJK SC Bold}]
+\setCJKsansfont{Noto Sans CJK SC}[BoldFont={Noto Sans CJK SC Bold}]
+\setmonofont{Noto Sans Mono CJK SC}[
+  BoldFont={Noto Sans Mono CJK SC Bold},
+  Scale=0.95,
+]
+\setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont={Noto Sans Mono CJK SC Bold}]
+
+% ---------- 间距节奏（Butterick：行距约 150%；两端对齐为默认） ----------
+\setstretch{$if(linestretch)$$linestretch$$else$1.35$endif$}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% ---------- 配色（深蓝主色系） ----------
+\usepackage[table]{xcolor}
+\definecolor{dblue}{HTML}{1F4E79}     % 主深蓝：标题 / 封面 / 表头
+\definecolor{dblue2}{HTML}{2E74B5}    % 次级蓝：子标题
+\definecolor{dbluebg}{HTML}{EAF1F9}   % 摘要框底色
+\definecolor{codebg}{HTML}{F4F5F6}    % 代码浅灰底
+\definecolor{coderule}{HTML}{C9CED4}  % 代码边框
+\definecolor{metagray}{HTML}{6B7280}  % 元信息灰
+
+% ---------- 标题层级（titlesec：黑体 + 深蓝 + 章节规则线） ----------
+\usepackage{titlesec}
+\titleformat{\section}
+  {\Large\bfseries\sffamily\color{dblue}}
+  {\thesection}{0.7em}{}
+  [{\vspace{2pt}{\color{dblue}\titlerule[1.1pt]}}]
+\titleformat{\subsection}
+  {\large\bfseries\sffamily\color{dblue2}}
+  {\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\sffamily\color{black!85}}
+  {\thesubsubsection}{0.7em}{}
+\titlespacing*{\section}{0pt}{2.2ex plus 1ex minus 0.3ex}{1.2ex plus 0.3ex}
+\titlespacing*{\subsection}{0pt}{1.9ex plus 0.8ex minus 0.2ex}{0.9ex plus 0.2ex}
+\titlespacing*{\subsubsection}{0pt}{1.5ex plus 0.6ex minus 0.2ex}{0.5ex}
+
+% ---------- 表格（booktabs 三线表；结构由 Lua 过滤器生成） ----------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}   % 兜底（过滤器未覆盖的表格）
+\usepackage{float}
+\setlength{\intextsep}{7pt plus 2pt minus 2pt}
+
+% ---------- 代码块（fvextra 兜底样式；正式样式由 codebox 提供） ----------
+\usepackage{fvextra}
+\fvset{frame=lines, framerule=0.4pt, rulecolor=coderule, fontsize=\small}
+
+% ---------- 强调框（摘要 / 代码） ----------
+\usepackage[most]{tcolorbox}
+\newtcolorbox{abstractbox}{
+  enhanced, breakable,
+  colback=dbluebg, colframe=dblue,
+  boxrule=0.8pt, arc=1.5pt,
+  left=12pt, right=12pt, top=8pt, bottom=8pt,
+  before skip=8pt, after skip=10pt,
+  attach boxed title to top left={yshift=-2.5mm, xshift=4mm},
+  boxed title style={arc=1pt, boxrule=0.6pt, colback=dblue, colframe=dblue},
+  title={\sffamily\bfseries 摘要}, fonttitle=\large\bfseries,
+}
+\newtcolorbox{codebox}{
+  enhanced, breakable,
+  colback=codebg, colframe=coderule,
+  boxrule=0.4pt, arc=1.5pt,
+  left=7pt, right=7pt, top=4pt, bottom=4pt,
+  before skip=5pt, after skip=5pt,
+}
+
+% ---------- 页眉页脚（fancyhdr） ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\fancyhead[L]{\small\sffamily\color{dblue}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\sffamily\color{metagray}JSSP 技术报告}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{%
+  \hbox to\headwidth{\color{dblue}\leaders\hrule height \headrulewidth\hfill}}
+
+% ---------- 超链接 ----------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=dblue,
+  urlcolor=dblue2,
+  citecolor=dblue2,
+  pdftitle={$if(title)$$title$$endif$},
+  bookmarksopen=true,
+}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+$if(title)$
+% ===================== 封面 =====================
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\vspace*{2.2cm}
+{\small\sffamily\color{metagray} JSSP · 技术报告}\\[2.6em]
+{\color{dblue}\rule{0.42\linewidth}{1.6pt}}\\[2.2em]
+{\fontsize{26}{38}\selectfont\bfseries\sffamily\color{dblue} $title$}\\[2.2em]
+{\color{dblue}\rule{0.42\linewidth}{1.6pt}}\\[2.0em]
+$if(subtitle)$
+{\large\sffamily\color{black!70} $subtitle$}\\[3.4em]
+$endif$
+{\normalsize\sffamily
+日期：$if(date)$$date$$else$2026 年 8 月$endif$\\[0.9em]
+模型：$if(model)$$model$$else$Qwen2.5-7B-Instruct（LoRA 微调）$endif$\\[0.9em]
+算力：$if(compute)$$compute$$else$RTX 5090（32 GB）× 1$endif$}
+\vfill
+{\small\sffamily\color{metagray} 参照 LLMCoSolver（NeurIPS 2025）的两阶段训练范式}
+\end{titlepage}
+\newpage
+$endif$
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$if(toc)$
+$if(toc-title)$
+\renewcommand*\contentsname{$toc-title$}
+$else$
+\renewcommand*\contentsname{\sffamily\bfseries\color{dblue}目录}
+$endif$
+{\setstretch{1.1}\setlength{\parskip}{0pt}%
+\setcounter{tocdepth}{$if(toc-depth)$$toc-depth$$else$2$endif$}%
+\tableofcontents}
+\newpage
+$endif$
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}
