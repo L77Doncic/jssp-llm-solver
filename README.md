@@ -84,7 +84,7 @@ git clone https://github.com/L77Doncic/jssp-llm-solver.git /root/jssp && cd /roo
 | 研究计划 | [docs/research_plan.md](docs/research_plan.md) |
 | LLMCoSolver 论文解读 | [docs/llmcosolver_notes.md](docs/llmcosolver_notes.md) |
 | 参考文献 | [docs/references.md](docs/references.md) |
-| **项目维护手册（宪法，含 16 条踩坑经验）** | [CLAUDE.md](CLAUDE.md) |
+| **项目维护手册（宪法，含 18 条踩坑经验）** | [CLAUDE.md](CLAUDE.md) |
 
 ## 目录结构
 
